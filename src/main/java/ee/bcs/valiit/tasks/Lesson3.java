@@ -17,7 +17,7 @@ public class Lesson3 {
 //        System.out.println(b);
 
 
-        int [] a  = {5,9,1,2,4,8,};
+        int[] a = {5, 9, 1, 2, 4, 8,};
         System.out.println(Arrays.toString(sort(a)));
 
 //        System.out.println(sum(new int[]{1, 2, 3, 4, 5, 6}));
@@ -61,7 +61,7 @@ public class Lesson3 {
                 int temp = a[i - 1];       // value saab uue kõige suurema i väärtuse
                 a[i - 1] = a[i];
                 a[i] = temp;
-                i= 0;
+                i = 0;
                 count = 0;
             }
             count++;
@@ -72,21 +72,34 @@ public class Lesson3 {
         return a;
     }
 
-
-    // TODO tagasta string tagurpidi
-    public static String reverseString(String a) {
-        StringBuilder stringBuilder = new StringBuilder(a);
-        stringBuilder.reverse();
-        return stringBuilder.toString();
-    }
-
-    // TODO tagasta kas sisestatud arv on primaar arv (jagub ainult 1 ja iseendaga)
-    public static boolean isPrime(int x) {
-        for (int i = 2; i < x; i++) {
-            if (x % i == 0) {
-                return false;
+    public static int[] sort2(int[] array) {
+        for (int j = 0; j < array.length; j++) {
+            int minIndex = j;
+            for (int i = j + 1; i < array.length; i++) {
+                if (array[i] < array[minIndex]) {
+                    minIndex = i;
+                }
             }
+            int temp = array[j];
+            array[j] = array[minIndex];
+            array[minIndex] = temp;
         }
-        return true;
+        return array;
+
+        // TODO tagasta string tagurpidi
+        public static String reverseString (String a){
+            StringBuilder stringBuilder = new StringBuilder(a);
+            stringBuilder.reverse();
+            return stringBuilder.toString();
+        }
+
+        // TODO tagasta kas sisestatud arv on primaar arv (jagub ainult 1 ja iseendaga)
+        public static boolean isPrime ( int x){
+            for (int i = 2; i < x; i++) {
+                if (x % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
-}
