@@ -57,9 +57,9 @@ public class Lesson3 {
     public static int[] sort(int[] a) {
         int count = 0;
         for (int i = 1; i < a.length; i++) {
-            if (a[i] > a[i - 1]) {         //kui esimene number jadas (i) on suurem kui järgmine number jadas (i+1), siis liigub number üles
+            if (a[i] > a[i - 1]) {         //kui esimene number jadas (i) on suurem kui järgmine number jadas (i-1), siis liigub number üles
                 int temp = a[i - 1];       // value saab uue kõige suurema i väärtuse
-                a[i - 1] = a[i];
+                a[i - 1] = a[i];            //kui tahan miinimumi leida, siis on vaja i+1.
                 a[i] = temp;
                 i = 0;
                 count = 0;
@@ -74,8 +74,8 @@ public class Lesson3 {
 
     public static int[] sort2(int[] array) {
         for (int j = 0; j < array.length; j++) {
-            int minIndex = j;
-            for (int i = j + 1; i < array.length; i++) {
+            int minIndex = j; // esimeses for loopis saan muutuja väärtuseks j ning iga loopiga väärtus vastavalt muutub
+            for (int i = j + 1; i < array.length; i++) { //kuna vaja on leida väikseim väärtus, siis i=j+1, suurima väärtuse leidmiseks i=j-1
                 if (array[i] < array[minIndex]) {
                     minIndex = i;
                 }
@@ -85,21 +85,22 @@ public class Lesson3 {
             array[minIndex] = temp;
         }
         return array;
+    }
 
         // TODO tagasta string tagurpidi
-        public static String reverseString (String a){
-            StringBuilder stringBuilder = new StringBuilder(a);
-            stringBuilder.reverse();
-            return stringBuilder.toString();
-        }
-
-        // TODO tagasta kas sisestatud arv on primaar arv (jagub ainult 1 ja iseendaga)
-        public static boolean isPrime ( int x){
-            for (int i = 2; i < x; i++) {
-                if (x % i == 0) {
-                    return false;
-                }
-            }
-            return true;
-        }
+    public static String reverseString (String a){
+        StringBuilder stringBuilder = new StringBuilder(a);
+        stringBuilder.reverse();
+        return stringBuilder.toString();
     }
+        // TODO tagasta kas sisestatud arv on primaar arv (jagub ainult 1 ja iseendaga)
+    public static boolean isPrime (int x){
+        for (int i = 2; i < x; i++) {
+            if (x % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+}
