@@ -84,9 +84,8 @@ public class CodeWars8 {
             }
             count++;
             count = count + (i + 1);
-            return count[numbers];
-
         }
+        return numbers;
     }
 }
 
