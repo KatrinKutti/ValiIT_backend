@@ -87,7 +87,7 @@ public class Lesson2 {
             n2 = n3;
             count++;
         }
-        return n;
+        return n2;
     }
 
         // https://onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&problem=36

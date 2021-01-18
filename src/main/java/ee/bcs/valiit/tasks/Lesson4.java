@@ -37,7 +37,7 @@ public class Lesson4 {
                 String account = scanner.nextLine();
                 System.out.println("Please enter deposit amount");
                 BigDecimal deposit = scanner.nextBigDecimal();
-                if (deposit.compareTo(BigDecimal.valueOf(0)) < 0) {
+                while(deposit.compareTo(BigDecimal.valueOf(0)) < 0) {
                     System.out.println("Invalid amount. Please enter valid deposit amount");
                     deposit = scanner.nextBigDecimal();
                 }
