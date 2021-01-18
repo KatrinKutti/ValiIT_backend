@@ -1,4 +1,4 @@
-package ee.bcs.valiit.tasks.solution.controller;
+package ee.bcs.valiit.tasks.controller;
 
 import ee.bcs.valiit.tasks.solution.SolutionLesson1MathUtil;
 import org.springframework.web.bind.annotation.*;
