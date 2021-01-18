@@ -76,7 +76,7 @@ public class Lesson2 {
         // 0, 1, 1, 2, 3, 5, 8, 13, 21
         // Tagasta fibonacci jada n element
     public static int exercise4(int n) {
-        int n1 = 0;
+        int n1 = 1;
         int n2 = 1;
         int count = 0;
         while (count < n) {

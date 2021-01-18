@@ -15,17 +15,7 @@ public class TestController {
     }
 
 
-    //http://localhost:8080/Katrin/fibonacci?n=10
-    @GetMapping("fibonacci/{n}")
-    public int fibonacci(@PathVariable("n") int nVariable) {
-        return Lesson2.exercise4(nVariable);
-    }
 
-
-    @GetMapping("seqLength")
-    public int seqLength(@RequestParam("n") int n) {
-        return Lesson2.seqLength(n);
-    }
 
 }
 
