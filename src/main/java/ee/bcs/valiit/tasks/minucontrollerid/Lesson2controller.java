@@ -12,5 +12,4 @@ public class Lesson2controller {
     public int fibonacci(@PathVariable("n") int nVariable) {
         return Lesson2.exercise4(nVariable);
     }
-
 }

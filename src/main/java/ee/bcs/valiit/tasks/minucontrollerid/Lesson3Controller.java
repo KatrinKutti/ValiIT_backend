@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class Lesson3Controller {
 
+    //
     @GetMapping("sum")
     public int sum(@RequestParam("array") int[]array){
         return Lesson3.sum(array);
