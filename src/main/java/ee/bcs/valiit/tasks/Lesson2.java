@@ -12,9 +12,11 @@ public class Lesson2 {
     public static void main(String[] args) {
 //        exercise1();
 //        exercise2(5);
-        exercise3(3, 3);
-//        exercise4(10);
+//        exercise3(3, 3);
+//        exercise4();
 //        exercise5();
+//        seqLength(10);
+
 //     TODO siia saab kirjutada koodi testimiseks
     }
 
@@ -92,8 +94,28 @@ public class Lesson2 {
         // TODO 1 (tee alamfunktsioon) mis leiab 3n+1 sequenci pikkuse
         // kui on paaris / 2 kui on paaritu *3+1
         // TODO 2 tee tsükkel mis leiab i -> j kõige suurema tsükkli pikkuse
-    public static void exercise5(int n) {
 
+    public static String exercise5(int x, int y) {
+        int maxLength = 0;
+        for(int i = x; i <= y; i++){
+            int seqLength = seqLength(i);
+            if(seqLength > maxLength){
+                maxLength = seqLength;
+            }
+        }
+        return x + " " + y + " " + maxLength;
+    }
 
+    public static int seqLength(int n) {
+        int count = 1;
+        while(n > 1){
+            count++;
+            if(n%2 == 0){
+                n = n / 2;
+            } else {
+                n = n*3 + 1;
+            }
+        }
+        return count;
     }
 }
