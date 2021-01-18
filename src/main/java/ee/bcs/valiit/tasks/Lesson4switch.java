@@ -11,8 +11,8 @@ public class Lesson4switch {
         Scanner scanner = new Scanner(System.in);
         System.out.println("createAccount");
         String sisend = scanner.nextLine();
-//            String[] sisendParts = sisend.split(" "); //mõtle välja, kuidas seda saab kasutada, et saaks sisendi ühe reana inputtida
-        BigDecimal balance = new BigDecimal("0");
+//            String[] sisendParts = sisend.split(" ");
+            BigDecimal balance = new BigDecimal("0");
 
         switch (sisend) {
             case "exit":
