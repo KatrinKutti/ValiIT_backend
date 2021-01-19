@@ -19,7 +19,7 @@ public class Lesson3Hard {
     // vahetab ära n'ide väärtused vastavalt fib jadale fib(n) = fib(n-1) + fib(n-2)
     public static int evenFibonacci(int x) {
 
-        int n1 = 0;
+        int n1 = 1;
         int n2 = 1;
         int count = 0;
         int sum = 0;
@@ -34,7 +34,7 @@ public class Lesson3Hard {
             System.out.println(n1 + " ");
 
         }
-        return sum;
+        return sum+=n2;
     }
 
     // TODO kirjuta mäng mis võtab suvalise numbri 0-100, mille kasutaja peab ära arvama
@@ -66,7 +66,30 @@ public class Lesson3Hard {
         }
     }
 
-
+    public static void randomGame1() {
+        Random random = new Random();
+        int number = random.nextInt(100);
+//        Scanner scanner = new Scanner(System.in);
+        System.out.println("Arva ära õige number vahemikus 0-100. Sul on 10 võimalust. Sisesta number: ");
+        int guess = 0;
+        int i = 0;
+        int count = 0;
+        boolean rightNumber = false;
+        while (rightNumber == false) {
+//            guess = scanner.nextInt();
+            count++;
+            if (guess == number) {
+                System.out.println("Õige! Arvasid numbri ära " + count + " katsega");
+            } else if (count >= 10){
+                System.out.println("Oled juba " + count + " korda pakkunud, aga õiget numbrit ei leidnud");
+                return;
+            } else if (number <= guess) {
+                System.out.println("Number ei olnud õige. Sinu pakutud number on suurem. Proovi uuesti.");
+            } else if (number >= guess) {
+                System.out.println("Number ei olnud õige. Sinu pakutud number on väiksem. Proovi uuesti.");
+            }
+        }
+    }
     // TODO kirjuta programm, mis tagastab sisestatud teksti morse koodis (https://en.wikipedia.org/wiki/Morse_code)
     // Kasuta sümboleid . ja -
     public static String morseCode(String text) {

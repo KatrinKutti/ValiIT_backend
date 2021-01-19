@@ -35,8 +35,15 @@ public class Lesson2 {
         for (int i = 9; i > 0; i--) {
             System.out.println(arvud[i] + " ");
         }
-
     }
+    public static int[] exercise1Web(int[] array){
+            int[] resultArray = new int[array.length];
+            for (int i = array.length - 1; i >= 0; i--) {
+                resultArray[array.length - 1 - i] = array[i];
+            }
+            return resultArray;
+    }
+
 
         // TODO prindi välja x esimest paaris arvu
         // Näide:
