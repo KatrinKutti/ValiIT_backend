@@ -2,6 +2,7 @@ package ee.bcs.valiit.tasks;
 
 import org.springframework.aop.scope.ScopedProxyUtils;
 
+import java.awt.List;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.SQLOutput;
@@ -14,7 +15,7 @@ public class Lesson2 {
 //        exercise2(5);
 //        exercise3(3, 3);
 //        exercise4();
-//        exercise5();
+        System.out.println(exercise5(1, 10));
 //        seqLength(10);
 
 //     TODO siia saab kirjutada koodi testimiseks
@@ -23,14 +24,13 @@ public class Lesson2 {
         // TODO loo 10 elemendile täisarvude massiv
         // TODO loe sisse konsoolist 10 täisarvu
         // TODO trüki arvud välja vastupidises järiekorras
-    public static void exercise1() {
 
+    public static void exercise1() {
         int[] arvud = new int[10];
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < 10; i++) {
             System.out.println("Sisesta number: ");
             arvud[i] = scanner.nextInt();
-
         }
         for (int i = 9; i > 0; i--) {
             System.out.println(arvud[i] + " ");
@@ -43,8 +43,6 @@ public class Lesson2 {
             }
             return resultArray;
     }
-
-
         // TODO prindi välja x esimest paaris arvu
         // Näide:
         // Sisend 5
