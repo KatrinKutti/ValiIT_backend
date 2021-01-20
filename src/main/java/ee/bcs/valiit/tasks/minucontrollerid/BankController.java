@@ -3,31 +3,44 @@ package ee.bcs.valiit.tasks.minucontrollerid;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 
 @RequestMapping("Katrin")
 @RestController
 public class BankController {
-//    @GetMapping("bank")
-//    public String createAccount(@RequestParam("account") int sisend) {
-//        return;
-//    }
-//
-//    public String getBalance(@RequestParam("balance") int sisend) {
-//        return;
-//    }
-//
-//    public String deposit(@RequestParam("deposit") int sisend) {
-//        return;
-//    }
-//
-//    public String withdraw(@RequestParam("withdraw") int sisend) {
-//        return;
-//    }
-//
-//    public String transfer(@RequestParam("transfer") int sisend) {
-//        return answer;
-//    }
-//
+    HashMap<String, BigDecimal> accountMap = new HashMap<>();
+
+    // http://localhost:8080/bank/createAccount?accountNr=EE123
+    @PostMapping("createAccount")
+    public void createAccount(@RequestParam("accountNr") String accountNr) {
+        accountMap.put(accountNr, BigDecimal.ZERO);
+    }
+
+    // http://localhost:8080/bank/accountBalance?accountNr=EE123
+    @GetMapping("accountBalance")
+    public BigDecimal accountBalance(@RequestParam("accountNr") String accountNr) {
+        accountMap.get(accountNr);
+        return BigDecimal.ZERO;
+    }
+
+    // http://localhost:8080/bank/depositMoney?accountNr=EE123&amount=12
+    @PutMapping("depositMoney")
+    public void depositMoney(@RequestParam("accountNr") String accountNr, @RequestParam("amount") BigDecimal amount) {
+        accountMap.put(accountNr, amount);
+    }
+
+    // http://localhost:8080/bank/withdrawMoney?accountNr=EE123&amount=12
+    @GetMapping("withdrawMoney")
+    public void withdrawMoney(@RequestParam("accountNr") String accountNr, @RequestParam("amount") BigDecimal withdraw) {
+        accountMap.get(accountNr);
+    }
+
+    // http://localhost:8080/bank/transferMoney?fromAccount=EE123&toAccount=EE124&amount=12
+    @GetMapping("transferMoney")
+    public void transferMoney(@RequestParam("fromAccount") String accountNr, @RequestParam("toAccount") String toAcount, @RequestParam("amount") BigDecimal amount) {
+        accountMap.get(accountNr);
+        accountMap.put(toAcount, amount);
+    }
 //
 //        if(sisend.equalsIgnoreCase("createAccount"){
 //            System.out.println("Please enter account number: ");
