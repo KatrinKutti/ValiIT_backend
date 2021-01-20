@@ -77,17 +77,35 @@ public class CodeWars8 {
     //Output: 1,2,3,4,5,6,7,8
 
     public static int[] pipeFix(int[] numbers) {
-        int count = 0;
-        for (int i = 0; i < numbers.length; i++) { //kas saab kasutada enhanced for tsüklit? (käib läbi kõik elemendid, saab kasutada, kui ei ole vaja elemendi indexit leida)
-            if (numbers[i] == numbers[i]) {
-
-            }
-            count++;
-            count = count + (i + 1);
+        int start = numbers[0]; //võtab esimese numbri
+        int end = numbers[numbers.length - 1]; //võtab viimase numbri ja lahutab ühe, et saada jadas eelviimane number
+        int[] newNumber = new int[end - start + 1];//seab uue numbri kohale
+        for (int i = 0; i < newNumber.length; i++) {
+            newNumber[i] = start;
+            start += 1;
         }
-        return numbers;
+        return newNumber;
     }
+
+    //Complete the square sum function so that it squares each number passed into it and then sums the results together.
+    //For example, for [1, 2, 2] it should return 9 because 1^2 + 2^2 + 2^2 = 9.
+    public static int squareSum(int[] n) {
+        int sum = 0;
+        for (int i = 0; i < n.length; i++) {
+            sum += n[i] * n[i];
+        }
+        return sum;
+    }
+
+    //Complete the function that accepts a string parameter, and reverses each word in the string.
+    // All spaces in the string should be retained.
+    //"This is an example!" ==> "sihT si na !elpmaxe"
+    //"double  spaces"      ==> "elbuod  secaps"
+
+//    public static String reverseWords(final String original){
+
 }
+
 
 
 

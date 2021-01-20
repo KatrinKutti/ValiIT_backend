@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 @RequestMapping("Katrin")
 @RestController
-public class Lesson4Controller {
+public class BankController {
 //    @GetMapping("bank")
 //    public String createAccount(@RequestParam("account") int sisend) {
 //        return;

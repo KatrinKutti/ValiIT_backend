@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class Lesson4 {
+public class Bank {
     // Store account nr as a key and account balance as value
     static HashMap<String, BigDecimal> accountBalanceMap = new HashMap<>();
 
@@ -13,8 +13,6 @@ public class Lesson4 {
 
         while (true) {
             String sisend = scanner.nextLine();
-//            String[] sisendParts = sisend.split(" ");
-
             if (sisend.equalsIgnoreCase("exit")) {
                 break;
             } else if (sisend.equalsIgnoreCase("createAccount")) {
