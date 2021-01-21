@@ -1,4 +1,4 @@
-package ee.bcs.valiit.tasks;
+package ee.bcs.valiit.tasks.bank;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
