@@ -1,12 +1,18 @@
 package ee.bcs.valiit.tasks.bank;
 
+import ee.bcs.valiit.tasks.solution.SolutionEmployee;
+import ee.bcs.valiit.tasks.solution.SolutionEmployeeController;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
 
 import java.math.BigDecimal;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RequestMapping("Katrin")
@@ -107,6 +113,24 @@ public class BankingController {
         return "Transfer processed! You have transferred " + transfer + "EUR to account " + toAccount;
     }
 
+    //http://localhost:8080/Katrin/Account
+    @GetMapping("Account")
+    public List<Account> getAccount(){
+        String sql = "SELECT * FROM account";
+        List<Account> result = jdbcTemplate.query(sql, new HashMap<>(), new AccountRowMapper());
+        return result;
+    }
+
+    public class AccountRowMapper implements RowMapper<Account>{
+        @Override
+        public Account mapRow(ResultSet resultSet, int i) throws SQLException{
+            Account account = new Account();
+            account.setAccount_id(resultSet.getInt("account_id"));
+            account.setAccount_number(resultSet.getString("account_number"));
+            account.setBalance(resultSet.getBigDecimal("balance"));
+            return account;
+        }
+    }
 
 }
 
