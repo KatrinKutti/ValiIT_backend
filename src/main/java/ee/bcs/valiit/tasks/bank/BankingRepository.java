@@ -15,32 +15,32 @@ public class BankingRepository {
     @Autowired
     private NamedParameterJdbcTemplate jdbcTemplate;
 
-//    public void createCusotmer(String firstName, String lastName, String address) {
-//        String sql = "INSERT INTO customer(firstname, lastname, address) VALUES (:firstname, :lastname, :address)";
-//        Map<String, Object> paramMap = new HashMap<>();
-//        paramMap.put("firstname", firstName);
-//        paramMap.put("lastname", lastName);
-//        paramMap.put("address", address);
-//        jdbcTemplate.update(sql, paramMap);
-//    }
-//
-//    public void customerToAccount(String firstName, String lastName, String accountNr) {
-//        Map<String, Object> paramMap = new HashMap<>();
-//        String sql = "SELECT customer_id FROM customer WHERE firstname = :firstname AND lastname = :lastname";
-//        paramMap.put("firstname", firstName);
-//        paramMap.put("lastname", lastName);
-//        Integer dbCustomer_id = jdbcTemplate.queryForObject(sql, paramMap, Integer.class);
-//    }
-//
-//
-//    public void updateCustomerToAccount(int dbCustomer_id, int dbAccount_id) {
-//        String sql = "UPDATE account SET customer_id = :customer_id WHERE account_id = :account_id";
-//        Map<String, Object> paramMap = new HashMap<>();
-//        paramMap.put("customer_id", dbCustomer_id);
-//        paramMap.put("account_id", dbAccount_id);
-//        jdbcTemplate.update(sql, paramMap);
-//
-//    }
+    public void createCustomer(String firstName, String lastName, String address) {
+        String sql = "INSERT INTO customer(firstname, lastname, address) VALUES (:firstname, :lastname, :address)";
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("firstname", firstName);
+        paramMap.put("lastname", lastName);
+        paramMap.put("address", address);
+        jdbcTemplate.update(sql, paramMap);
+    }
+
+    public void customerToAccount(String firstName, String lastName, String accountNr) {
+        Map<String, Object> paramMap = new HashMap<>();
+        String sql = "SELECT customer_id FROM customer WHERE firstname = :firstname AND lastname = :lastname";
+        paramMap.put("firstname", firstName);
+        paramMap.put("lastname", lastName);
+        jdbcTemplate.queryForObject(sql, paramMap, Integer.class);
+    }
+
+
+    public void updateCustomerToAccount(int dbCustomer_id, int dbAccount_id) {
+        String sql = "UPDATE account SET customer_id = :customer_id WHERE account_id = :account_id";
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("customer_id", dbCustomer_id);
+        paramMap.put("account_id", dbAccount_id);
+        jdbcTemplate.update(sql, paramMap);
+
+    }
 
     public void createAccount(String accountNr) {
         String sql = "INSERT INTO account(account_number, balance)" + "VALUES (:accountNr, :balance)";

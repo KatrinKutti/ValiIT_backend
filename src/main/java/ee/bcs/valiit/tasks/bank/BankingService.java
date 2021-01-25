@@ -1,14 +1,9 @@
 package ee.bcs.valiit.tasks.bank;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcOperations;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class BankingService {
@@ -17,16 +12,14 @@ public class BankingService {
     private BankingRepository bankingRepository;
 
 
-//    public String createCustomer(String firstName, String lastName, String address) {
-//        bankingRepository.createCusotmer(firstName, lastName, address);
-//        return "Customer created";
-//    }
-//
-//    public String customerToAccount(String firstName, String lastName, String accountNr) {
-//        bankingRepository.customerToAccount(firstName, lastName, accountNr);
-//        return "Your profile has been added to your account";
-//
-//    }
+    public void createCustomer(String firstName, String lastName, String address) {
+        bankingRepository.createCustomer(firstName, lastName, address);
+     }
+
+    public void customerToAccount(String firstName, String lastName, String accountNr) {
+        bankingRepository.customerToAccount(firstName, lastName, accountNr);
+
+    }
 
     public String createAccount(String accountNr) {
         bankingRepository.createAccount(accountNr);

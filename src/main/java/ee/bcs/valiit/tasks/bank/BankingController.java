@@ -16,19 +16,19 @@ public class BankingController {
     private BankingService bankingService;
 
     //http://localhost:8080/Katrin/customer?firstName=Nipi&lastName=Tiri&address=Kuskil
-//    @PostMapping("customer")
-//    public String customer(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("address") String address) {
-//       bankingService.createCustomer(firstName, lastName, address);
-//        return "Customer created";
-//    }
-//
-//    // http://localhost:8080/Katrin/customerToAccount?firstName=Mida&lastName=Iganes&accountNr=EE567
-//    @PutMapping("customerToAccount")
-//    public String customerTaAccount(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("accountNr") String accountNr) {
-//        bankingService.customerToAccount(firstName, lastName, accountNr);
-//        return "Your profile has been added to your account";
-//
-//    }
+    @PostMapping("customer")
+    public String customer(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("address") String address) {
+       bankingService.createCustomer(firstName, lastName, address);
+        return "Customer created";
+    }
+
+    // http://localhost:8080/Katrin/customerToAccount?firstName=Mida&lastName=Iganes&accountNr=EE567
+    @PutMapping("customerToAccount")
+    public String customerTaAccount(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("accountNr") String accountNr) {
+        bankingService.customerToAccount(firstName, lastName, accountNr);
+        return "Your profile has been added to your account";
+
+    }
 
     // http://localhost:8080/Katrin/create?accountNr=EE405
     @PostMapping("create")
