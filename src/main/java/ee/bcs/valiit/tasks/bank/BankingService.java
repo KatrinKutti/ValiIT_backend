@@ -17,16 +17,16 @@ public class BankingService {
     private BankingRepository bankingRepository;
 
 
-    public String createCustomer(String firstName, String lastName, String address) {
-        bankingRepository.createCusotmer(firstName, lastName, address);
-        return "Customer created";
-    }
-
-    public String customerToAccount(String firstName, String lastName, String accountNr) {
-        bankingRepository.customerToAccount(firstName, lastName, accountNr);
-        return "Your profile has been added to your account";
-
-    }
+//    public String createCustomer(String firstName, String lastName, String address) {
+//        bankingRepository.createCusotmer(firstName, lastName, address);
+//        return "Customer created";
+//    }
+//
+//    public String customerToAccount(String firstName, String lastName, String accountNr) {
+//        bankingRepository.customerToAccount(firstName, lastName, accountNr);
+//        return "Your profile has been added to your account";
+//
+//    }
 
     public String createAccount(String accountNr) {
         bankingRepository.createAccount(accountNr);
@@ -47,7 +47,7 @@ public class BankingService {
             return "Invalid amount. Please enter valid deposit amount";
         }
         dbBalance = bankingRepository.getBalance(accountNr).add(deposit);
-        bankingRepository.updateDeposit(accountNr, dbBalance);
+        bankingRepository.updateBalance(accountNr, dbBalance);
         return "Deposit processed. Your new balance on account " + accountNr + " is " +dbBalance + "EUR";
     }
 
@@ -57,7 +57,7 @@ public class BankingService {
             return "Invalid amount or not enough funds. Please try again";
         }
         dbBalance = dbBalance.subtract(withdraw);
-        bankingRepository.updateWithdrawal(accountNr, dbBalance);
+        bankingRepository.updateBalance(accountNr, dbBalance);
         return "Withdrawal processed! Your new balance on account " + accountNr + " is: " + dbBalance + "EUR";
     }
 
@@ -66,10 +66,10 @@ public class BankingService {
         if (transfer.compareTo(BigDecimal.valueOf(0)) < 0 || (transfer.compareTo(dbBalance)) > 0) {
             return "Invalid amount or not enough funds. Please try again";
         }
-        bankingRepository.updateMakeTransferFrom(fromAccount, dbBalance);
 
         dbBalance = dbBalance.add(transfer);
-        bankingRepository.updateMakeTransferTo(toAccount, dbBalance);
+        bankingRepository.updateBalance(toAccount, dbBalance);
+        bankingRepository.updateBalance(fromAccount, dbBalance);
         return "Transfer processed! You have transferred " + transfer + "EUR to account " + toAccount + " from account " + fromAccount;
 
     }
