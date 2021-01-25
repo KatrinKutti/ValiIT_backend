@@ -1,12 +1,21 @@
 package ee.bcs.valiit.tasks.bank;
 
-import java.math.BigDecimal;
+import java.util.List;
 
 public class Customer {
     private String firstName;
     private String lastName;
-    private String accountNr;
-    private BigDecimal balance;
+    private String address;
+    private int customerId;
+    private List<Account> Account;
+
+    public List<ee.bcs.valiit.tasks.bank.Account> getAccount() {
+        return Account;
+    }
+
+    public void setAccount(List<ee.bcs.valiit.tasks.bank.Account> account) {
+        Account = account;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -24,19 +33,20 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public String getAccountNr() {
-        return accountNr;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAccountNr(String accountNr) {
-        this.accountNr = accountNr;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public BigDecimal getBalance() {
-        return balance;
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
+
 }

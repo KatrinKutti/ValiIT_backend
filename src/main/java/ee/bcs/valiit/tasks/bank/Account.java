@@ -6,6 +6,15 @@ public class Account {
     private int account_id;
     private String account_number;
     private BigDecimal balance;
+    private String TransactionHistory;
+
+    public String getTransactionHistory() {
+        return TransactionHistory;
+    }
+
+    public void setTransactionHistory(String transactionHistory) {
+        TransactionHistory = transactionHistory;
+    }
 
     public int getAccount_id() {
         return account_id;
