@@ -64,40 +64,15 @@ public class BankingRepository {
         jdbcTemplate.update(sql, paramMap);
     }
 
-    public void insertDepositToHistory(String accountNr, BigDecimal deposit, Object timestamp) {
+    public void addToHistory(String accountNr, BigDecimal deposit, BigDecimal withdraw, String fromAccount, String toAccount, BigDecimal transfer, Object timestamp) {
         String sql = "INSERT INTO transaction_history(account_number, deposit, timestamp) VALUES (:account_number, :deposit, :timestamp)";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("account_number", accountNr);
         paramMap.put("deposit", deposit);
-        paramMap.put("timestamp", LocalDateTime.now().toString());
-        jdbcTemplate.update(sql, paramMap);
-    }
-
-    public void insertWithdrawalToHistory(String accountNr, BigDecimal withdraw) {
-        String sql = "INSERT INTO transaction_history(account_number, withdrawal, timestamp) VALUES (:account_number, :withdrawal, :timestamp)";
-        Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("account_number", accountNr);
         paramMap.put("withdrawal", withdraw.negate());
-        paramMap.put("timestamp", LocalDateTime.now().toString());
-        jdbcTemplate.update(sql, paramMap);
-    }
-
-    public void insertTransferFromToHistory(String fromAccount, String toAccount, BigDecimal transfer, Object timestamp) {
-        String sql = "INSERT INTO transaction_history(account_number, transfer, timestamp, to_account) VALUES (:account_number, :transfer, :timestamp, :to_account)";
-        Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("account_number", fromAccount);
         paramMap.put("to_account", toAccount);
-        paramMap.put("transfer", transfer.negate());
-        paramMap.put("timestamp", LocalDateTime.now().toString());
-        jdbcTemplate.update(sql, paramMap);
-    }
-
-    public void insertTransferToToHistory(String fromAccount, String toAccount, BigDecimal transfer, Object timestamp) {
-        String sql = "INSERT INTO transaction_history(account_number, transfer, timestamp, from_account) VALUES (:account_number, :transfer, :timestamp, :from_account)";
-        Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("account_number", toAccount);
         paramMap.put("from_account", fromAccount);
-        paramMap.put("transfer", transfer);
+        paramMap.put("transfer", transfer.negate());
         paramMap.put("timestamp", LocalDateTime.now().toString());
         jdbcTemplate.update(sql, paramMap);
     }

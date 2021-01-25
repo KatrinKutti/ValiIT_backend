@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Service
 public class BankingService {
@@ -37,6 +38,7 @@ public class BankingService {
         }
         dbBalance = bankingRepository.getBalance(accountNr).add(deposit);
         bankingRepository.updateBalance(accountNr, dbBalance);
+        bankingRepository.addToHistory(accountNr, deposit, null, "null", "null", null, LocalDateTime.now().toString());
         return "Deposit processed. Your new balance on account " + accountNr + " is " + dbBalance + "EUR";
     }
 
@@ -47,6 +49,7 @@ public class BankingService {
         }
         dbBalance = dbBalance.subtract(withdraw);
         bankingRepository.updateBalance(accountNr, dbBalance);
+        bankingRepository.addToHistory(accountNr, null, withdraw.negate(), "null", "null", null, LocalDateTime.now().toString());
         return "Withdrawal processed! Your new balance on account " + accountNr + " is: " + dbBalance + "EUR";
     }
 
@@ -59,6 +62,8 @@ public class BankingService {
         dbBalance = dbBalance.add(transfer);
         bankingRepository.updateBalance(fromAccount, dbBalance);
         bankingRepository.updateBalance(toAccount, dbBalance);
+        bankingRepository.addToHistory("null", null, null, fromAccount, "null", transfer.negate(), LocalDateTime.now().toString());
+        bankingRepository.addToHistory("null", null, null, "null", toAccount, transfer, LocalDateTime.now().toString());
         return "Transfer processed! You have transferred " + transfer + "EUR to account " + toAccount + " from account " + fromAccount;
     }
 }
