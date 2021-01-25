@@ -14,11 +14,10 @@ public class BankingService {
 
     public void createCustomer(String firstName, String lastName, String address) {
         bankingRepository.createCustomer(firstName, lastName, address);
-     }
+    }
 
     public void customerToAccount(String firstName, String lastName, String accountNr) {
         bankingRepository.customerToAccount(firstName, lastName, accountNr);
-
     }
 
     public String createAccount(String accountNr) {
@@ -38,7 +37,7 @@ public class BankingService {
         }
         dbBalance = bankingRepository.getBalance(accountNr).add(deposit);
         bankingRepository.updateBalance(accountNr, dbBalance);
-        return "Deposit processed. Your new balance on account " + accountNr + " is " +dbBalance + "EUR";
+        return "Deposit processed. Your new balance on account " + accountNr + " is " + dbBalance + "EUR";
     }
 
     public String makeWithdrawal(String accountNr, BigDecimal withdraw) {
@@ -52,18 +51,15 @@ public class BankingService {
     }
 
     public String makeTransfer(String fromAccount, String toAccount, BigDecimal transfer) {
-        BigDecimal dbBalance= bankingRepository.getBalance(fromAccount);
+        BigDecimal dbBalance = bankingRepository.getBalance(fromAccount);
         if (transfer.compareTo(BigDecimal.valueOf(0)) < 0 || (transfer.compareTo(dbBalance)) > 0) {
             return "Invalid amount or not enough funds. Please try again";
         }
 
         dbBalance = dbBalance.add(transfer);
         bankingRepository.updateBalance(fromAccount, dbBalance);
-//        bankingRepository.insertTransferFromToHistory(fromAccount, dbBalance);
         bankingRepository.updateBalance(toAccount, dbBalance);
-//        bankingRepository.insertTransferToToHistory(toAccount, transfer);
         return "Transfer processed! You have transferred " + transfer + "EUR to account " + toAccount + " from account " + fromAccount;
-
     }
 }
 

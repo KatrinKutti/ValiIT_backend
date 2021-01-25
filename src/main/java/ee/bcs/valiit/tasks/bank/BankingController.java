@@ -18,7 +18,7 @@ public class BankingController {
     //http://localhost:8080/Katrin/customer?firstName=Nipi&lastName=Tiri&address=Kuskil
     @PostMapping("customer")
     public String customer(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("address") String address) {
-       bankingService.createCustomer(firstName, lastName, address);
+        bankingService.createCustomer(firstName, lastName, address);
         return "Customer created";
     }
 
@@ -27,15 +27,13 @@ public class BankingController {
     public String customerTaAccount(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("accountNr") String accountNr) {
         bankingService.customerToAccount(firstName, lastName, accountNr);
         return "Your profile has been added to your account";
-
     }
 
     // http://localhost:8080/Katrin/create?accountNr=EE405
     @PostMapping("create")
-    public String  create(@RequestParam("accountNr") String accountNr) {
+    public String create(@RequestParam("accountNr") String accountNr) {
         bankingService.createAccount(accountNr);
         return "Account created! Your account number is " + accountNr;
-
     }
 
     // http://localhost:8080/Katrin/balance?accountNr=EE325
@@ -43,7 +41,6 @@ public class BankingController {
     public String balance(@RequestParam("accountNr") String accountNr) {
         bankingService.getBalance(accountNr);
         return "Your balance on account " + accountNr + " is " + bankingService.getBalance(accountNr) + "EUR";
-
     }
 
     // http://localhost:8080/Katrin/deposit?accountNr=EE123&deposit=100
@@ -51,7 +48,6 @@ public class BankingController {
     public String deposit(@RequestParam("accountNr") String accountNr, @RequestParam("deposit") BigDecimal deposit) {
         bankingService.makeDeposit(accountNr, deposit);
         return "Deposit processed";
-
     }
 
     // http://localhost:8080/Katrin/withdraw?accountNr=EE456&withdraw=200
@@ -59,7 +55,6 @@ public class BankingController {
     public String withdraw(@RequestParam("accountNr") String accountNr, @RequestParam("withdraw") BigDecimal withdraw) {
         bankingService.makeWithdrawal(accountNr, withdraw);
         return "Withdrawal processed";
-
     }
 
     // http://localhost:8080/Katrin/transfer?fromAccount=EE456&toAccount=EE325&transfer=100
@@ -67,7 +62,6 @@ public class BankingController {
     public String transfer(@RequestParam("fromAccount") String fromAccount, @RequestParam("toAccount") String toAccount, @RequestParam("transfer") BigDecimal transfer) {
         bankingService.makeTransfer(fromAccount, toAccount, transfer);
         return "Transfer processed";
-
     }
 
     //http://localhost:8080/Katrin/allAccounts

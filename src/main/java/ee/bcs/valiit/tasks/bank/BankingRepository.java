@@ -39,7 +39,6 @@ public class BankingRepository {
         paramMap.put("customer_id", dbCustomer_id);
         paramMap.put("account_id", dbAccount_id);
         jdbcTemplate.update(sql, paramMap);
-
     }
 
     public void createAccount(String accountNr) {
@@ -81,7 +80,6 @@ public class BankingRepository {
         paramMap.put("withdrawal", withdraw.negate());
         paramMap.put("timestamp", LocalDateTime.now().toString());
         jdbcTemplate.update(sql, paramMap);
-
     }
 
     public void insertTransferFromToHistory(String fromAccount, String toAccount, BigDecimal transfer, Object timestamp) {
