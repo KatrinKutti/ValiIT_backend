@@ -31,14 +31,11 @@ public class BankingService {
     public String createAccount(String accountNr) {
         bankingRepository.createAccount(accountNr);
         return "Account created! Your account number is " + accountNr;
-
     }
 
     public String getBalance(String accountNr) {
         bankingRepository.getBalance(accountNr);
         return "Your balance on account " + accountNr + " is " + getBalance(accountNr) + "EUR";
-
-
     }
 
     public String makeDeposit(String accountNr, BigDecimal deposit) {
@@ -68,8 +65,10 @@ public class BankingService {
         }
 
         dbBalance = dbBalance.add(transfer);
-        bankingRepository.updateBalance(toAccount, dbBalance);
         bankingRepository.updateBalance(fromAccount, dbBalance);
+//        bankingRepository.insertTransferFromToHistory(fromAccount, dbBalance);
+        bankingRepository.updateBalance(toAccount, dbBalance);
+//        bankingRepository.insertTransferToToHistory(toAccount, transfer);
         return "Transfer processed! You have transferred " + transfer + "EUR to account " + toAccount + " from account " + fromAccount;
 
     }

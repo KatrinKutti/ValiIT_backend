@@ -1,21 +1,11 @@
 package ee.bcs.valiit.tasks.bank;
 
-import ee.bcs.valiit.tasks.solution.SolutionEmployee;
-import ee.bcs.valiit.tasks.solution.SolutionEmployeeController;
-import org.apache.catalina.valves.JDBCAccessLogValve;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
 
 import java.math.BigDecimal;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @RequestMapping("Katrin")
 @RestController
@@ -26,19 +16,19 @@ public class BankingController {
     private BankingService bankingService;
 
     //http://localhost:8080/Katrin/customer?firstName=Nipi&lastName=Tiri&address=Kuskil
-    @PostMapping("customer")
-    public String customer(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("address") String address) {
-       bankingService.createCustomer(firstName, lastName, address);
-        return "Customer created";
-    }
-
-    // http://localhost:8080/Katrin/customerToAccount?firstName=Mida&lastName=Iganes&accountNr=EE567
-    @PutMapping("customerToAccount")
-    public String customerTaAccount(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("accountNr") String accountNr) {
-        bankingService.customerToAccount(firstName, lastName, accountNr);
-        return "Your profile has been added to your account";
-
-    }
+//    @PostMapping("customer")
+//    public String customer(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("address") String address) {
+//       bankingService.createCustomer(firstName, lastName, address);
+//        return "Customer created";
+//    }
+//
+//    // http://localhost:8080/Katrin/customerToAccount?firstName=Mida&lastName=Iganes&accountNr=EE567
+//    @PutMapping("customerToAccount")
+//    public String customerTaAccount(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("accountNr") String accountNr) {
+//        bankingService.customerToAccount(firstName, lastName, accountNr);
+//        return "Your profile has been added to your account";
+//
+//    }
 
     // http://localhost:8080/Katrin/create?accountNr=EE405
     @PostMapping("create")
