@@ -1,4 +1,4 @@
-package ee.bcs.valiit.tasks.solution.controller;
+package ee.bcs.valiit.tasks;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -13,7 +13,7 @@ import java.util.Map;
 
 @RequestMapping("solution/bank")
 @RestController
-public class SolutionBankController {
+public class BankController2 {
 
     @Autowired
     private NamedParameterJdbcTemplate jdbcTemplate;
