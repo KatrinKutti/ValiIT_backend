@@ -4,24 +4,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet id="1" author="Siim">
-        <createTable tableName="author">
-            <column name="id" type="int" autoIncrement="true">
-                <constraints primaryKey="true"/>
-            </column>
-            <column name="name" type="text"/>
-        </createTable>
 
-        <createTable tableName="book">
-            <column name="id" type="int" autoIncrement="true">
-                <constraints primaryKey="true"/>
-            </column>
-            <column name="name" type="text"/>
-            <column name="author_id" type="int">
-                <constraints foreignKeyName="fk_book_author" references="author(id)"/>
-            </column>
-        </createTable>
-    </changeSet>
     <changeSet id="2021-26-01" author="Katrin">
         <createTable tableName="customer">
             <column name="customer_id" type="int" autoIncrement="true">
@@ -55,5 +38,12 @@
             <column name="to_account" type="text"/>
             <column name="from_account" type="text"/>
         </createTable>
+    </changeSet>
+    <changeSet id="2021-01-27" author="Katrin">
+        <addColumn tableName="transaction_history">
+            <column name="account_id" type="int">
+                <constraints foreignKeyName="fk_transaction_history_account" references="account(account_id)"/>
+            </column>
+        </addColumn>
     </changeSet>
 </databaseChangeLog>

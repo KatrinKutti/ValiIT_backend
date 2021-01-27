@@ -1,35 +1,36 @@
 package ee.bcs.valiit.tasks.bank;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class Account {
-    private int account_id;
-    private String account_number;
+    private int accountId;
+    private String accountNumber;
     private BigDecimal balance;
-    private String TransactionHistory;
+    private List<TransactionHistory> transactionHistoryList;
 
-    public String getTransactionHistory() {
-        return TransactionHistory;
+    public List<TransactionHistory> getTransactionHistoryList() {
+        return transactionHistoryList;
     }
 
-    public void setTransactionHistory(String transactionHistory) {
-        TransactionHistory = transactionHistory;
+    public void setTransactionHistoryList(List<TransactionHistory> transactionHistoryList) {
+        this.transactionHistoryList = transactionHistoryList;
     }
 
-    public int getAccount_id() {
-        return account_id;
+    public int getAccountId() {
+        return accountId;
     }
 
-    public void setAccount_id(int account_id) {
-        this.account_id = account_id;
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
 
-    public String getAccount_number() {
-        return account_number;
+    public String getAccountNumber() {
+        return accountNumber;
     }
 
-    public void setAccount_number(String account_number) {
-        this.account_number = account_number;
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
     }
 
     public BigDecimal getBalance() {

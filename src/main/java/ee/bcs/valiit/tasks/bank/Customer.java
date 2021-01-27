@@ -2,19 +2,22 @@ package ee.bcs.valiit.tasks.bank;
 
 import java.util.List;
 
+
 public class Customer {
+
     private String firstName;
     private String lastName;
     private String address;
     private int customerId;
-    private List<Account> Account;
 
-    public List<ee.bcs.valiit.tasks.bank.Account> getAccount() {
-        return Account;
+    private List<Account> accountList;
+
+    public List<Account> getAccountList() {
+        return accountList;
     }
 
-    public void setAccount(List<ee.bcs.valiit.tasks.bank.Account> account) {
-        Account = account;
+    public void setAccountList(List<Account> accountList) {
+        this.accountList = accountList;
     }
 
     public String getFirstName() {
