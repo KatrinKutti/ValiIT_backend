@@ -20,7 +20,7 @@ public class BankingController {
         return bankingService.createCustomer(firstName, lastName, address);
     }
 
-    // http://localhost:8080/Katrin/createAccount?accountNr=EE405
+    // http://localhost:8080/Katrin/createAccount?accountNr=EE123
     @PostMapping("createAccount")
     public String createAccount(@RequestParam("accountNr") String accountNr) {
         return bankingService.createAccount(accountNr);

@@ -1,7 +1,5 @@
 package ee.bcs.valiit.tasks.bank;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.catalina.mapper.Mapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -9,7 +7,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 public class BankingControllerTest  {
@@ -27,8 +27,8 @@ public class BankingControllerTest  {
 
     @Test
     void createAccount() throws Exception{
-        http://localhost:8080/Katrin/createAccount?accountNr=EE405
-        mockMvc.perform(MockMvcRequestBuilders.post("/Katrin/createAccount?accountNr=EE405")
+        http://localhost:8080/Katrin/createAccount?accountNr=EE777
+        mockMvc.perform(MockMvcRequestBuilders.post("/Katrin/createAccount?accountNr=EE777")
         .contentType("application/json")
         ).andExpect((MockMvcResultMatchers.status().isOk()));
     }
@@ -59,8 +59,8 @@ public class BankingControllerTest  {
 
     @Test
     void withdraw() throws Exception{
-        http://localhost:8080/Katrin/withdraw?accountNr=EE456&withdraw=200
-        mockMvc.perform(MockMvcRequestBuilders.put("/Katrin/withdraw?accountNr=EE456&withdraw=200")
+        http://localhost:8080/Katrin/withdraw?accountNr=EE123&withdraw=10
+        mockMvc.perform(MockMvcRequestBuilders.put("/Katrin/withdraw?accountNr=EE123&withdraw=10")
         .contentType("application/json")
         ).andExpect(MockMvcResultMatchers.status().isOk());
     }
