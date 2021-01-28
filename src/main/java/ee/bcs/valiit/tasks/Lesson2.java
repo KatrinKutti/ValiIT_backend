@@ -15,7 +15,7 @@ public class Lesson2 {
 //        exercise2(5);
 //        exercise3(3, 3);
 //        exercise4();
-        System.out.println(exercise5(1, 10));
+//        System.out.println(exercise5(1, 10));
 //        seqLength(10);
 
 //     TODO siia saab kirjutada koodi testimiseks
@@ -81,7 +81,7 @@ public class Lesson2 {
         // 0, 1, 1, 2, 3, 5, 8, 13, 21
         // Tagasta fibonacci jada n element
     public static int exercise4(int n) {
-        int n1 = 1;
+        int n1 = 0;
         int n2 = 1;
         int count = 0;
         while (count < n) {

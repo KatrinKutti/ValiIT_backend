@@ -10,7 +10,7 @@ public class Lesson3Hard {
     public static void main(String[] args) {
 //        System.out.println(evenFibonacci(12));
 //        randomGame();
-        System.out.println(morseCode("katrin"));
+//        System.out.println(morseCode("katrin"));
 
 
     }
@@ -19,7 +19,7 @@ public class Lesson3Hard {
     // vahetab ära n'ide väärtused vastavalt fib jadale fib(n) = fib(n-1) + fib(n-2)
     public static int evenFibonacci(int x) {
 
-        int n1 = 1;
+        int n1 = 0;
         int n2 = 1;
         int count = 0;
         int sum = 0;
