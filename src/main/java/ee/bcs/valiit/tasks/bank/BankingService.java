@@ -33,7 +33,7 @@ public class BankingService {
 
     public String getBalance(String accountNr) {
         bankingRepository.getBalance(accountNr);
-        return "Your balance on account " + accountNr + " is " + getBalance(accountNr) + "EUR";
+        return "Your balance is " + bankingRepository.getBalance(accountNr) + "EUR";
     }
 
     public String makeDeposit(String accountNr, BigDecimal deposit) {

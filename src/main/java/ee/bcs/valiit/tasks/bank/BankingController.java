@@ -14,15 +14,15 @@ public class BankingController {
     @Autowired
     private BankingService bankingService;
 
-    //http://localhost:8080/Katrin/customer?firstName=Nipi&lastName=Tiri&address=Kuskil
-    @PostMapping("customer")
-    public String customer(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("address") String address) {
+    //http://localhost:8080/Katrin/createCustomer?firstName=Nipi&lastName=Tiri&address=Kuskil
+    @PostMapping("createCustomer")
+    public String createCustomer(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("address") String address) {
         return bankingService.createCustomer(firstName, lastName, address);
     }
 
-    // http://localhost:8080/Katrin/create?accountNr=EE405
-    @PostMapping("create")
-    public String create(@RequestParam("accountNr") String accountNr) {
+    // http://localhost:8080/Katrin/createAccount?accountNr=EE405
+    @PostMapping("createAccount")
+    public String createAccount(@RequestParam("accountNr") String accountNr) {
         return bankingService.createAccount(accountNr);
     }
 
@@ -32,15 +32,15 @@ public class BankingController {
         return bankingService.customerToAccount(dbCustomer_id, dbAccount_id);
     }
 
-    // http://localhost:8080/Katrin/balance?accountNr=EE325
-    @GetMapping("balance")
-    public String balance(@RequestParam("accountNr") String accountNr) {
+    // http://localhost:8080/Katrin/getBalance?accountNr=EE325
+    @GetMapping("getBalance")
+    public String getBalance(@RequestParam("accountNr") String accountNr) {
         return bankingService.getBalance(accountNr);
     }
 
-    // http://localhost:8080/Katrin/deposit?accountNr=EE123&deposit=100
-    @PutMapping("deposit")
-    public String deposit(@RequestParam("accountNr") String accountNr, @RequestParam("deposit") BigDecimal deposit) {
+    // http://localhost:8080/Katrin/makeDeposit?accountNr=EE123&deposit=100
+    @PutMapping("makeDeposit")
+    public String makeDeposit(@RequestParam("accountNr") String accountNr, @RequestParam("deposit") BigDecimal deposit) {
         return bankingService.makeDeposit(accountNr, deposit);
     }
 
@@ -50,15 +50,15 @@ public class BankingController {
         return bankingService.makeWithdrawal(accountNr, withdraw);
     }
 
-    // http://localhost:8080/Katrin/transfer?fromAccount=EE456&toAccount=EE325&transfer=100
+    // http://localhost:8080/Katrin/makeTransfer?fromAccount=EE456&toAccount=EE325&transfer=100
 
-    @PutMapping("transfer")
-    public String transfer(@RequestParam("fromAccount") String fromAccount, @RequestParam("toAccount") String toAccount, @RequestParam("transfer") BigDecimal transfer) {
+    @PutMapping("makeTransfer")
+    public String makeTransfer(@RequestParam("fromAccount") String fromAccount, @RequestParam("toAccount") String toAccount, @RequestParam("transfer") BigDecimal transfer) {
         return bankingService.makeTransfer(fromAccount, toAccount, transfer);
     }
 
-    //http://localhost:8080/Katrin/customerAccounts?customerId=2
-    @GetMapping("customerAccounts")
+    //http://localhost:8080/Katrin/accountTransactions?customerId=2
+    @GetMapping("accountTransactions")
     public List accountTransactions(int customerId) {
         return bankingService.customerAccounts(customerId);
     }
