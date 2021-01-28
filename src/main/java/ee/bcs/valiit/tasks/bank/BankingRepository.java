@@ -87,12 +87,11 @@ public class BankingRepository {
         jdbcTemplate.update(sql, paramMap);
     }
 
-    public List<Account> customerAccounts(Customer customer) {
+    public List<Account> customerAccounts(int customerId) {
         String sql = "SELECT * FROM account WHERE customer_id = :customer_id";
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("customer_id", customer.getCustomerId());
+        paramMap.put("customer_id", customerId);
         List<Account> accountList = jdbcTemplate.query(sql, paramMap, new AccountRowMapper());
-        customer.setAccountList(accountList);
         return accountList;
     }
 

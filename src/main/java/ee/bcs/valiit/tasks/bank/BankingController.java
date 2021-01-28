@@ -57,11 +57,10 @@ public class BankingController {
         return bankingService.makeTransfer(fromAccount, toAccount, transfer);
     }
 
-    //http://localhost:8080/Katrin/customerAccounts?firstName=Katrin&lastName=Kutti
+    //http://localhost:8080/Katrin/customerAccounts?customerId=2
     @GetMapping("customerAccounts")
-    public List accountTransactions(Customer customer) {
-
-        return bankingService.customerAccounts(customer);
+    public List accountTransactions(int customerId) {
+        return bankingService.customerAccounts(customerId);
     }
 }
 

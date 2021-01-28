@@ -70,12 +70,13 @@ public class BankingService {
         return "Transfer processed";
     }
 
-    public List customerAccounts(Customer customer) {
-        List<Account> accountList = bankingRepository.customerAccounts(customer);
+    public List customerAccounts(int customerId) {
+        List<Account> accountList = bankingRepository.customerAccounts(customerId);
         for (Account account : accountList) {
-            return bankingRepository.accountTransactions(account);
+            List<TransactionHistory> transactions = bankingRepository.accountTransactions(account);
+            account.setTransactionHistoryList(transactions);
         }
-        return bankingRepository.customerAccounts(customer);
+        return accountList;
     }
 }
 
