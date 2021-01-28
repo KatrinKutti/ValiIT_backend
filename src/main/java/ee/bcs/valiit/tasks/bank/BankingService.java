@@ -3,6 +3,7 @@ package ee.bcs.valiit.tasks.bank;
 import liquibase.pro.packaged.L;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -44,6 +45,7 @@ public class BankingService {
         return "Deposit processed";
     }
 
+    @Transactional
     public String makeWithdrawal(String accountNr, BigDecimal withdraw) {
         BigDecimal dbBalance = bankingRepository.getBalance(accountNr);
         if (withdraw.compareTo(BigDecimal.valueOf(0)) < 0) {
@@ -56,6 +58,7 @@ public class BankingService {
         return "Withdrawal processed";
     }
 
+    @Transactional
     public String makeTransfer(String fromAccount, String toAccount, BigDecimal transfer) {
         BigDecimal dbBalance = bankingRepository.getBalance(fromAccount);
         if (transfer.compareTo(dbBalance) > 0) {
