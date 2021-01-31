@@ -81,6 +81,18 @@ public class BankingService {
         }
         return accountList;
     }
+
+    public List getAccounts() {
+        return bankingRepository.accountsList();
+    }
+
+    public List getCustomers() {
+        return bankingRepository.customerList();
+
+    }
+    public List getTransactions(){
+        return  bankingRepository.transactionHistoryList();
+    }
 }
 
 

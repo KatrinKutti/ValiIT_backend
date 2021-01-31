@@ -62,7 +62,26 @@ public class BankingController {
     public List accountTransactions(int customerId) {
         return bankingService.customerAccounts(customerId);
     }
+
+    //http://localhost:8080/Katrin/getAccounts
+
+    @GetMapping("getAccounts")
+    public List getAccounts() {
+        return bankingService.getAccounts();
+    }
+    //http://localhost:8080/Katrin/getCustomers
+    @GetMapping("getCustomers")
+    public List getCustomers() {
+        return bankingService.getCustomers();
+    }
+//    http://localhost:8080/Katrin/getTransactions
+    @GetMapping("getTransactions")
+    public List getTransactions(){
+        return bankingService.getTransactions();
+    }
+
 }
+
 
 
 

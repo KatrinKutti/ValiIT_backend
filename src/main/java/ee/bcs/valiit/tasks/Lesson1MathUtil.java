@@ -13,10 +13,10 @@ public class Lesson1MathUtil {
     public static void main(String[] args) {
 //        System.out.println(min(6, 9));
 //        System.out.println(max(56, 5));
-//        System.out.println(abs(-8));
-//        System.out.println(isEven(7));
-        System.out.println(min(10, 9, 6));
-        System.out.println(max(5, 5, 4));
+//        System.out.println(abs(3));
+        System.out.println(isEven(8));
+//        System.out.println(min(10, 9, 6));
+//        System.out.println(max(5, 5, 4));
 
 
     }

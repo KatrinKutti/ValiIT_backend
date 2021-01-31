@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>
+    <link rel="stylesheet" href="style.css">
+    <br>
+    <aside><img src="https://clipground.com/images/institute-clipart-18.jpg"></aside>
+    <strong>BANK</strong><br><br>
+    <em>The new way of banking, without money and future!</em><br>
+    <br>
+    <a href="/Katrin/getTransactions">Customers</a>
+    <a href="/Katrin/getAccounts">Accounts</a>
+    <a href="">Transactions</a>
+    <a href="/Katrin/accountTransactions">Customer account transactions</a>
+    <br>
+
+</h1>
+
+<button class="open-button" onclick="openCreateCustomer()">Create customer</button>
+<div class="form-popup" id="Create customer">
+    <form action="/Katrin/createCustomer" method="post">
+        <label for="firstName">First name:</label>
+        <input type="text" id="firstName" name="firstName" required><br>
+        <label for="lastName">Last name:</label>
+        <input type="text" id="lastName" name="lastName" required><br>
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required><br>
+        <button type="submit" class="btn">Confirm</button>
+        <button type="button" class="btn cancel" onclick="closeCreateCustomer()">Close</button>
+    </form>
+</div>
+<br><br>
+<button class="open-button" onclick="openCreateAccount()">Create account</button>
+<div class="form-popup" id="Create account">
+    <form action="/Katrin/createAccount" method="post">
+        <label for="accountNr">Account number:</label>
+        <input type="text" id="accountNr" name="accountNr"><br>
+        <button type="submit" class="btn">Confirm</button>
+        <button type="button" class="btn cancel" onclick="closeCreateAccount()">Close</button>
+    </form>
+</div>
+<br><br>
+
+<button class="open-button" onclick="openCustomerToAccount()">Customer to account</button>
+<div class="form-popup" id="Customer to account">
+    <form action="/Katrin/customerToAccount" method="post">
+        <label for="customerId">Customer Id:</label>
+        <input type="text" id="customerId" name="customerId"><br>
+        <label for="accountId">Customer Id:</label>
+        <input type="text" id="accountId" name="accountId"><br>
+        <button type="submit" class="btn">Confirm</button>
+        <button type="button" class="btn cancel" onclick="closeCustomerToAccount()">Close</button>
+    </form>
+</div>
+<br><br>
+
+
+<button class="open-button" onclick="openGetBalance()">Get balance</button>
+<div class="form-popup" id="Get balance">
+    <form action="/Katrin/getBalance" method="get">
+        <label for="getBalance">Account number:</label>
+        <input type="text" id="getBalance" name="accountNr"><br>
+        <button type="submit" class="btn">Confirm</button>
+        <button type="button" class="btn cancel" onclick="closeGetBalance()">Close</button>
+    </form>
+</div>
+<br><br>
+
+<button class="open-button" onclick="openDepositMoney()">Deposit money</button>
+<div class="form-popup" id="Deposit money">
+    <form action="/Katrin/makeDeposit" method="post">
+        <label for="makeDeposit">Account number:</label>
+        <input type="text" id="makeDeposit" name="accountNr"><br>
+        <label for="deposit">Deposit amount:</label>
+        <input type="number" id="deposit" name="deposit"><br>
+        <button type="submit" class="btn">Confirm</button>
+        <button type="button" class="btn cancel" onclick="closeDepositMoney()">Close</button>
+    </form>
+</div>
+<br><br>
+<button class="open-button" onclick="openWithdrawMoney()">Withdraw money</button>
+<div class="form-popup" id="Withdraw money">
+    <form action="/Katrin/withdraw" method="post">
+        <label for="makeWithdrawal">Account number:</label>
+        <input type="text" id="makeWithdrawal" name="accountNr"><br>
+        <button type="submit" class="btn">Confirm</button>
+        <button type="button" class="btn cancel" onclick="closeWithdrawMoney()">Close</button>
+    </form>
+
+</div>
+<br><br>
+
+<button class="open-button" onclick="openTransferMoney()">Transfer money</button>
+<div class="form-popup" id="Transfer money">
+    <form action="/Katrin/makeTransfer" method="post">
+        <label for="fromAccount">From account:</label>
+        <input type="text" id="fromAccount" name="fromAccount"><br>
+        <label for="toAccount">To account:</label>
+        <input type="text" id="toAccount" name="toAccount"><br>
+        <label for="transfer">Transfer amount:</label>
+        <input type="number" id="transfer" name="transfer"><br>
+        <button type="submit" class="btn">Confirm</button>
+        <button type="button" class="btn cancel" onclick="closeTransferMoney()">Close</button>
+    </form>
+</div>
+<br><br>
+
+<script>
+    function openCreateCustomer() {
+        document.getElementById("Create customer").style.display = "block";
+    }
+
+    function closeCreateCustomer() {
+        document.getElementById("Create customer").style.display = "none";
+    }
+</script>
+<script>
+    function openCreateAccount() {
+        document.getElementById("Create account").style.display = "block";
+    }
+
+    function closeCreateAccount() {
+        document.getElementById("Create account").style.display = "none";
+    }
+</script>
+<script>
+    function openCustomerToAccount() {
+        document.getElementById("Customer to account").style.display = "block";
+    }
+
+    function closeCustomerToAccount() {
+        document.getElementById("Customer to account").style.display = "none";
+    }
+</script>
+<script>
+    function openGetBalance() {
+        document.getElementById("Get balance").style.display = "block";
+    }
+
+    function closeGetBalance() {
+        document.getElementById("Get balance").style.display = "none";
+    }
+</script>
+<script>
+    function openDepositMoney() {
+        document.getElementById("Deposit money").style.display = "block";
+    }
+
+    function closeDepositMoney() {
+        document.getElementById("Deposit money").style.display = "none";
+    }
+</script>
+<script>
+    function openWithdrawMoney() {
+        document.getElementById("Withdraw money").style.display = "block";
+    }
+
+    function closeWithdrawMoney() {
+        document.getElementById("Withdraw money").style.display = "none";
+    }
+</script>
+<script>
+    function openTransferMoney() {
+        document.getElementById("Transfer money").style.display = "block";
+    }
+
+    function closeTransferMoney() {
+        document.getElementById("Transfer money").style.display = "none";
+    }
+
+</script>
+
+</body>
+</html>

@@ -103,27 +103,24 @@ public class BankingRepository {
         account.setTransactionHistoryList(transactionHistoryList);
         return transactionHistoryList;
     }
+
+    public List<Account> accountsList() {
+        String sql = "SELECT * FROM account";
+        List<Account> accountList = jdbcTemplate.query(sql, new HashMap<>(), new AccountRowMapper());
+        return accountList;
+    }
+    public List<Customer> customerList() {
+        String sql = "SELECT * FROM customer";
+        List<Customer> customerList = jdbcTemplate.query(sql, new HashMap<>(), new CustomerRowMapper());
+        return customerList;
+    }
+    public List<TransactionHistory> transactionHistoryList(){
+        String sql = "SELECT * FROM transaction_history";
+        List<TransactionHistory> transactionHistoryList = jdbcTemplate.query(sql, new HashMap<>(), new TransactionRowMapper());
+        return transactionHistoryList;
+    }
 }
 
-//    //http://localhost:8080/Katrin/allAccounts
-//
-//    @GetMapping("allAccounts")
-//    public List<Account> getAccounts() {
-//        String sql = "SELECT * FROM account";
-//        List<Account> result = jdbcTemplate.query(sql, new HashMap<>(), new AccountRowMapper());
-//        return result;
-//    }
-//
-//
-//    //http://localhost:8080/Katrin/allCustomers
-//
-//    @GetMapping("allCustomers")
-//    public List<Customer> getCustomers() {
-//        String sql = "SELECT * FROM customer";
-//        List<Customer> result = jdbcTemplate.query(sql, new HashMap<>(), new CustomerRowMapper());
-//        return result;
-//    }
-//
 
 
 

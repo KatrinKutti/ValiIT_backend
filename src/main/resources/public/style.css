@@ -1,0 +1,50 @@
+aside {
+    width: 35%;
+    padding-left: 10px;
+    margin-left: 10px;
+    float: right;
+}
+p{alignment: right;
+}
+h2 {
+    background-color: lightslategrey;
+    text-align: center
+}
+
+h1 {
+    background-color: lightslategrey;
+    text-align: center;
+}
+a{
+    background-color: lightslategrey;
+    text-underline-style: none;
+    text-align: center;
+    color: white;
+}
+
+form {
+    text-align: center
+}
+
+.open-button {
+    background-color: lightslategrey;
+    color: white;
+    padding: 16px 20px;
+    border: black;
+    bottom: 23px;
+    right: 28px;
+    width: 212px;
+}
+
+.form-popup {
+    display: none;
+    alignment: center;
+}
+
+.form-container {
+    max-width: 150px;
+    padding: 10px;
+    background-color: white;
+}
+
+
