@@ -1,25 +1,28 @@
 aside {
-    width: 35%;
+    width: 25%;
     padding-left: 10px;
     margin-left: 10px;
-    float: right;
+    float: left;
 }
-p{alignment: right;
-}
+
 h2 {
     background-color: lightslategrey;
     text-align: center
 }
-
-h1 {
-    background-color: lightslategrey;
-    text-align: center;
+body{
+    background-color: lightgrey;
 }
-a{
-    background-color: lightslategrey;
-    text-underline-style: none;
+
+h1 {background-color: darkseagreen;
     text-align: center;
+    alignment: center;
+}
+button{    background-color: lightslategrey;
+    text-decoration-line: none;
     color: white;
+    alignment: top;
+    text-align: center;
+    border-bottom-color: black;
 }
 
 form {

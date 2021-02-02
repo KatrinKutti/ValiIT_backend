@@ -27,12 +27,12 @@ public class BankingController {
     }
 
     // http://localhost:8080/Katrin/customerToAccount?customerId=2&accountId=4
-    @PutMapping("customerToAccount")
+    @PostMapping("customerToAccount")
     public String customerToAccount(@RequestParam("customerId") int dbCustomer_id, @RequestParam("accountId") int dbAccount_id) {
         return bankingService.customerToAccount(dbCustomer_id, dbAccount_id);
     }
 
-    // http://localhost:8080/Katrin/getBalance?accountNr=EE325
+    // http://localhost:8080/Katrin/getBalance?accountNr=EE123
     @GetMapping("getBalance")
     public String getBalance(@RequestParam("accountNr") String accountNr) {
         return bankingService.getBalance(accountNr);

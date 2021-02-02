@@ -10,102 +10,134 @@
     <br>
     <aside><img src="https://clipground.com/images/institute-clipart-18.jpg"></aside>
     <strong>BANK</strong><br><br>
-    <em>The new way of banking, without money and future!</em><br>
+    <em>The new way of banking, without money and future!</em><br><br>
+</h1>
+<div>
+    <table>
+        <tr>
+            <th>customer_id</th>
+            <th>firstname</th>
+            <th>lastname</th>
+            <th>address</th>
+        </tr>
+    </table>
+    <button id="customers">Customers></button>
+</div>
+<script>
+    function getCustomers(){
+        fetch('/Katrin/customer')
+        .then(result => result.json())
+        .then(function (result) {
+            let tableElement = document.getElementById("customerTable");
+            tableElement.innerHTML = "";
+            for (let element of result){
+                let newRowElement = document.createElement("tr");
+                tableElement.appendChild((newRowELement);
+
+                let newCellElement = document.createElement("td");
+                newCellElement.innerText = element.customer_id;
+                newRowElement.appendChild(newCellElement)
+
+                newCellElement = document.createElement("td");
+                newCellElement.innerText = element.firstname;
+                newRowElement.appendChild(newCellElement)
+
+                newCellElement = document.createElement("td");
+                newCellElement.innerText = element.lastname;
+                newRowElement.appendChild(newCellElement)
+
+                newCellElement = document.createElement("td");
+                newCellElement.innerText = element.address;
+                newRowElement.appendChild(newCellElement)
+
+            }
+            console.log(result);
+        })
+    }
+</script>
+
+    <button id="accounts">Accounts></button>
+    <button id="transactions">Transactions></button>
+    <button id="customerAccountTransactions">Customer account transactions></button>
     <br>
-    <a href="/Katrin/getTransactions">Customers</a>
-    <a href="/Katrin/getAccounts">Accounts</a>
-    <a href="">Transactions</a>
-    <a href="/Katrin/accountTransactions">Customer account transactions</a>
     <br>
 
-</h1>
+
 
 <button class="open-button" onclick="openCreateCustomer()">Create customer</button>
 <div class="form-popup" id="Create customer">
-    <form action="/Katrin/createCustomer" method="post">
-        <label for="firstName">First name:</label>
-        <input type="text" id="firstName" name="firstName" required><br>
-        <label for="lastName">Last name:</label>
-        <input type="text" id="lastName" name="lastName" required><br>
-        <label for="address">Address:</label>
-        <input type="text" id="address" name="address" required><br>
-        <button type="submit" class="btn">Confirm</button>
-        <button type="button" class="btn cancel" onclick="closeCreateCustomer()">Close</button>
-    </form>
+    <label for="firstName">First name:</label>
+    <input type="text" id="firstName" name="firstName" required><br>
+    <label for="lastName">Last name:</label>
+    <input type="text" id="lastName" name="lastName" required><br>
+    <label for="address">Address:</label>
+    <input type="text" id="address" name="address" required><br>
+    <button id="confCustomer" type="button" class="btn">Confirm</button>
+    <button id="closeCustomer" type="button" class="btn cancel" onclick="closeCreateCustomer()">Close</button>
 </div>
 <br><br>
 <button class="open-button" onclick="openCreateAccount()">Create account</button>
 <div class="form-popup" id="Create account">
-    <form action="/Katrin/createAccount" method="post">
-        <label for="accountNr">Account number:</label>
-        <input type="text" id="accountNr" name="accountNr"><br>
-        <button type="submit" class="btn">Confirm</button>
-        <button type="button" class="btn cancel" onclick="closeCreateAccount()">Close</button>
-    </form>
+    <label for="accountNr">Account number:</label>
+    <input type="text" id="accountNr" name="accountNr"><br>
+    <button id="confAccount" type="button" class="btn">Confirm</button>
+    <button id="closeAccount" type="button" class="btn cancel" onclick="closeCreateAccount()">Close</button>
 </div>
 <br><br>
 
 <button class="open-button" onclick="openCustomerToAccount()">Customer to account</button>
 <div class="form-popup" id="Customer to account">
-    <form action="/Katrin/customerToAccount" method="post">
-        <label for="customerId">Customer Id:</label>
-        <input type="text" id="customerId" name="customerId"><br>
-        <label for="accountId">Customer Id:</label>
-        <input type="text" id="accountId" name="accountId"><br>
-        <button type="submit" class="btn">Confirm</button>
-        <button type="button" class="btn cancel" onclick="closeCustomerToAccount()">Close</button>
-    </form>
+    <label for="customerId">Customer Id:</label>
+    <input type="text" id="customerId" name="customerId"><br>
+    <label for="accountId">Account Id:</label>
+    <input type="text" id="accountId" name="accountId"><br>
+    <button id="confCustomerToAccount" type="button" class="btn">Confirm</button>
+    <button id="closeCustomerToAccount" type="button" class="btn cancel" onclick="closeCustomerToAccount()">Close
+    </button>
 </div>
 <br><br>
 
 
 <button class="open-button" onclick="openGetBalance()">Get balance</button>
 <div class="form-popup" id="Get balance">
-    <form action="/Katrin/getBalance" method="get">
-        <label for="getBalance">Account number:</label>
-        <input type="text" id="getBalance" name="accountNr"><br>
-        <button type="submit" class="btn">Confirm</button>
-        <button type="button" class="btn cancel" onclick="closeGetBalance()">Close</button>
-    </form>
+    <label for="getBalance">Account number:</label>
+    <input type="text" id="getBalance" name="accountNr"><br>
+    <button id="confGetBalance" type="button" class="btn">Confirm</button>
+    <button id="closeGetBalance" type="button" class="btn cancel" onclick="closeGetBalance()">Close</button>
 </div>
 <br><br>
 
 <button class="open-button" onclick="openDepositMoney()">Deposit money</button>
 <div class="form-popup" id="Deposit money">
-    <form action="/Katrin/makeDeposit" method="post">
-        <label for="makeDeposit">Account number:</label>
-        <input type="text" id="makeDeposit" name="accountNr"><br>
-        <label for="deposit">Deposit amount:</label>
-        <input type="number" id="deposit" name="deposit"><br>
-        <button type="submit" class="btn">Confirm</button>
-        <button type="button" class="btn cancel" onclick="closeDepositMoney()">Close</button>
-    </form>
+    <label for="makeDeposit">Account number:</label>
+    <input type="text" id="makeDeposit" name="accountNr"><br>
+    <label for="deposit">Deposit amount:</label>
+    <input type="number" id="deposit" name="deposit"><br>
+    <button id="confDeposit" type="button" class="btn">Confirm</button>
+    <button id="closeDeposit" type="button" class="btn cancel" onclick="closeDepositMoney()">Close</button>
 </div>
 <br><br>
 <button class="open-button" onclick="openWithdrawMoney()">Withdraw money</button>
 <div class="form-popup" id="Withdraw money">
-    <form action="/Katrin/withdraw" method="post">
-        <label for="makeWithdrawal">Account number:</label>
-        <input type="text" id="makeWithdrawal" name="accountNr"><br>
-        <button type="submit" class="btn">Confirm</button>
-        <button type="button" class="btn cancel" onclick="closeWithdrawMoney()">Close</button>
-    </form>
-
+    <label for="makeWithdrawal">Account number:</label>
+    <input type="text" id="makeWithdrawal" name="accountNr"><br>
+    <label for="withdraw">Withdraw amount:</label>
+    <input type="number" id="withdraw" name="withdraw"><br>
+    <button id="confWithdraw" type="button" class="btn">Confirm</button>
+    <button id="closeWithdraw" type="button" class="btn cancel" onclick="closeWithdrawMoney()">Close</button>
 </div>
 <br><br>
 
 <button class="open-button" onclick="openTransferMoney()">Transfer money</button>
 <div class="form-popup" id="Transfer money">
-    <form action="/Katrin/makeTransfer" method="post">
-        <label for="fromAccount">From account:</label>
-        <input type="text" id="fromAccount" name="fromAccount"><br>
-        <label for="toAccount">To account:</label>
-        <input type="text" id="toAccount" name="toAccount"><br>
-        <label for="transfer">Transfer amount:</label>
-        <input type="number" id="transfer" name="transfer"><br>
-        <button type="submit" class="btn">Confirm</button>
-        <button type="button" class="btn cancel" onclick="closeTransferMoney()">Close</button>
-    </form>
+    <label for="fromAccount">From account:</label>
+    <input type="text" id="fromAccount" name="fromAccount"><br>
+    <label for="toAccount">To account:</label>
+    <input type="text" id="toAccount" name="toAccount"><br>
+    <label for="transfer">Transfer amount:</label>
+    <input type="number" id="transfer" name="transfer"><br>
+    <button id="confTransfer" type="button" class="btn">Confirm</button>
+    <button id="closeTransfer" type="button" class="btn cancel" onclick="closeTransferMoney()">Close</button>
 </div>
 <br><br>
 
@@ -119,6 +151,27 @@
     }
 </script>
 <script>
+    function result() {
+        return "Customer created"
+    }
+
+    function createCustomer() {
+        let firstNameSearchField = document.getElementById("firstName");
+        let lastNameSearchField = document.getElementById("lastName");
+        let addressSearchField = document.getElementById("address");
+
+        fetch('/Katrin/createCustomer?firstName=' + firstNameSearchField.value + '&lastName=' + lastNameSearchField.value + '&address=' + addressSearchField.value, {
+            method: 'POST',
+        })
+            .then(result => result.text())
+            .then(result => alert(result));
+    }
+
+    let requestButton = document.getElementById("confCustomer");
+    requestButton.onclick = createCustomer;
+
+</script>
+<script>
     function openCreateAccount() {
         document.getElementById("Create account").style.display = "block";
     }
@@ -126,6 +179,27 @@
     function closeCreateAccount() {
         document.getElementById("Create account").style.display = "none";
     }
+
+</script>
+<script>
+
+    function result() {
+        return "Account created"
+    }
+
+    function createAccount() {
+        let accountNrField = document.getElementById("accountNr");
+
+        fetch('/Katrin/createAccount?accountNr=' + accountNrField.value, {
+            method: 'POST',
+        })
+            .then(result => result.text())
+            .then(result => alert(result));
+    }
+
+    requestButton = document.getElementById("confAccount");
+    requestButton.onclick = createAccount;
+
 </script>
 <script>
     function openCustomerToAccount() {
@@ -137,6 +211,28 @@
     }
 </script>
 <script>
+
+    function result() {
+        return "Customer added to account"
+    }
+
+    function customerToAccount() {
+        let customerIdSearchField = document.getElementById("customerId");
+        let accountIdSearchField = document.getElementById("accountId");
+
+        fetch('/Katrin/customerToAccount?customerId=' + customerIdSearchField.value + '&accountId=' + accountIdSearchField.value, {
+            method: 'POST',
+        })
+
+            .then(result => result.text())
+            .then(result => alert(result));
+    }
+
+    requestButton = document.getElementById("confCustomerToAccount");
+    requestButton.onclick = customerToAccount;
+
+</script>
+<script>
     function openGetBalance() {
         document.getElementById("Get balance").style.display = "block";
     }
@@ -144,6 +240,20 @@
     function closeGetBalance() {
         document.getElementById("Get balance").style.display = "none";
     }
+</script>
+<script>
+
+    function getBalance() {
+        let AccountNrSearchField = document.getElementById("getBalance");
+        fetch('/Katrin/getBalance?accountNr=' + AccountNrSearchField.value)
+            .then(result => result.text())
+            .then(function (result) {
+                alert(result);
+            })
+    }
+
+    requestButton = document.getElementById("confGetBalance");
+    requestButton.onclick = getBalance;
 </script>
 <script>
     function openDepositMoney() {
@@ -155,6 +265,26 @@
     }
 </script>
 <script>
+    function result() {
+        return "Deposit processed";
+    }
+
+    function makeDeposit() {
+        let accountNrSearchField = document.getElementById("makeDeposit");
+        let depositSearchField = document.getElementById("deposit");
+
+        fetch('/Katrin/makeDeposit?accountNr=' + accountNrSearchField.value + '&deposit=' + depositSearchField.value, {
+            method: 'PUT',
+        })
+            .then(result => result.text())
+            .then(result => alert(result));
+    }
+
+    requestButton = document.getElementById("confDeposit");
+    requestButton.onclick = makeDeposit;
+</script>
+<script>
+
     function openWithdrawMoney() {
         document.getElementById("Withdraw money").style.display = "block";
     }
@@ -164,6 +294,26 @@
     }
 </script>
 <script>
+    function result() {
+        return "Withdrawal processed";
+    }
+
+    function withdraw() {
+        let accountNrSearchField = document.getElementById("makeWithdrawal");
+        let withdrawSearchField = document.getElementById("withdraw");
+
+        fetch('/Katrin/withdraw?accountNr=' + accountNrSearchField.value + '&withdraw=' + withdrawSearchField.value, {
+            method: 'PUT',
+        })
+            .then(result => result.text())
+            .then(result => alert(result));
+    }
+
+    requestButton = document.getElementById("confWithdraw");
+    requestButton.onclick = withdraw;
+</script>
+<script>
+
     function openTransferMoney() {
         document.getElementById("Transfer money").style.display = "block";
     }
@@ -171,7 +321,26 @@
     function closeTransferMoney() {
         document.getElementById("Transfer money").style.display = "none";
     }
+</script>
+<script>
+    function result() {
+        return "Transfer processed!";
+    }
 
+    function makeTransfer() {
+        let fromAccountNrSearchField = document.getElementById("fromAccount");
+        let toAccountNrSearchField = document.getElementById("toAccount");
+        let transferSearchField = document.getElementById("transfer");
+
+        fetch('/Katrin/makeTransfer?fromAccount=' + fromAccountNrSearchField.value + '&toAccount=' + toAccountNrSearchField.value + '&transfer=' + transferSearchField.value, {
+            method: 'PUT',
+        })
+            .then(result => result.text())
+            .then(result => alert(result));
+    }
+
+    requestButton = document.getElementById("confTransfer");
+    requestButton.onclick = makeTransfer;
 </script>
 
 </body>
