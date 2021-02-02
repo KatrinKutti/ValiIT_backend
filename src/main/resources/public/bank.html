@@ -12,56 +12,109 @@
     <strong>BANK</strong><br><br>
     <em>The new way of banking, without money and future!</em><br><br>
 </h1>
-<div>
-    <table>
+<button class="open-button" onclick="openGetCustomers()">Get customers</button>
+<div class="form-popup" id="getCustomers">
+    <table id="customersTable">
         <tr>
-            <th>customer_id</th>
-            <th>firstname</th>
-            <th>lastname</th>
-            <th>address</th>
+            <th>Customer Id</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Address</th>
         </tr>
     </table>
-    <button id="customers">Customers></button>
+    <button id="closeGetCustomers" type="button" class="btn cancel" onclick="closeGetCustomers()">Close</button>
+
 </div>
 <script>
-    function getCustomers(){
-        fetch('/Katrin/customer')
-        .then(result => result.json())
-        .then(function (result) {
-            let tableElement = document.getElementById("customerTable");
-            tableElement.innerHTML = "";
-            for (let element of result){
-                let newRowElement = document.createElement("tr");
-                tableElement.appendChild((newRowELement);
+    function openGetCustomers() {
+        document.getElementById("getCustomers").style.display = "block";
+        fetch("/Katrin/getCustomers")
+            .then(result => result.json())
+            .then(function (result) {
+                let tableElement = document.getElementById("customersTable");
+                tableElement.innerHTML = "";
+                for (let element of result) {
+                    let newRowElement = document.createElement("tr");
+                    tableElement.appendChild(newRowElement);
 
-                let newCellElement = document.createElement("td");
-                newCellElement.innerText = element.customer_id;
-                newRowElement.appendChild(newCellElement)
+                    let newCellElement = document.createElement("td");
+                    newCellElement.innerText = element.customerId
+                    newRowElement.appendChild(newCellElement)
 
-                newCellElement = document.createElement("td");
-                newCellElement.innerText = element.firstname;
-                newRowElement.appendChild(newCellElement)
+                    newCellElement = document.createElement("td");
+                    newCellElement.innerText = element.firstName;
+                    newRowElement.appendChild(newCellElement)
 
-                newCellElement = document.createElement("td");
-                newCellElement.innerText = element.lastname;
-                newRowElement.appendChild(newCellElement)
+                    newCellElement = document.createElement("td");
+                    newCellElement.innerText = element.lastName;
+                    newRowElement.appendChild(newCellElement)
 
-                newCellElement = document.createElement("td");
-                newCellElement.innerText = element.address;
-                newRowElement.appendChild(newCellElement)
+                    newCellElement = document.createElement("td");
+                    newCellElement.innerText = element.address;
+                    newRowElement.appendChild(newCellElement)
 
-            }
-            console.log(result);
-        })
+                }
+                console.log(result);
+            })
     }
+    function closeGetCustomers() {
+        document.getElementById("getCustomers").style.display = "none";
+    }
+
+
+</script>
+<button class="open-button" onclick="openGetAccounts()">Get customers</button>
+<div class="form-popup" id="Account">
+    <table id="accountsTable">
+        <tr>
+            <th>Account Id</th>
+            <th>Account number</th>
+            <th>Balance</th>
+        </tr>
+    </table>
+    <button id="closeGetAccounts" type="button" class="btn cancel" onclick="closeGetAccounts()">Close</button>
+
+</div>
+<script>
+    function openGetAccounts() {
+        document.getElementById("Account").style.display = "block";
+        fetch("/Katrin/getAccounts")
+            .then(result => result.json())
+            .then(function (result) {
+                let tableElement = document.getElementById("accountsTable");
+                tableElement.innerHTML = "";
+                for (let element of result) {
+                    let newRowElement = document.createElement("tr");
+                    tableElement.appendChild(newRowElement);
+
+                    let newCellElement = document.createElement("td");
+                    newCellElement.innerText = element.accountId
+                    newRowElement.appendChild(newCellElement)
+
+                    newCellElement = document.createElement("td");
+                    newCellElement.innerText = element.accountNumber;
+                    newRowElement.appendChild(newCellElement)
+
+                    newCellElement = document.createElement("td");
+                    newCellElement.innerText = element.balance;
+                    newRowElement.appendChild(newCellElement)
+
+                }
+                console.log(result);
+            })
+    }
+    function closeGetAccounts() {
+        document.getElementById("getAccounts").style.display = "none";
+    }
+
+
 </script>
 
-    <button id="accounts">Accounts></button>
-    <button id="transactions">Transactions></button>
-    <button id="customerAccountTransactions">Customer account transactions></button>
-    <br>
-    <br>
-
+<button id="accounts">Accounts></button>
+<button id="transactions">Transactions></button>
+<button id="customerAccountTransactions">Customer account transactions></button>
+<br>
+<br>
 
 
 <button class="open-button" onclick="openCreateCustomer()">Create customer</button>
