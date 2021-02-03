@@ -69,17 +69,30 @@ public class BankingController {
     public List getAccounts() {
         return bankingService.getAccounts();
     }
+
     //http://localhost:8080/Katrin/getCustomers
     @GetMapping("getCustomers")
     public List getCustomers() {
         return bankingService.getCustomers();
     }
-//    http://localhost:8080/Katrin/getTransactions
+
+    //    http://localhost:8080/Katrin/getTransactions
     @GetMapping("getTransactions")
-    public List getTransactions(){
+    public List getTransactions() {
         return bankingService.getTransactions();
     }
 
+
+    //    http://localhost:8080/Katrin/getPassword?userName=KatrinKutti
+    @GetMapping("getPassword")
+    public String getPassword(@RequestParam("user_name") String userName) {
+        return bankingService.findPasswordByUserName(userName);
+    }
+
+    @PostMapping("registerCustomer")
+    public String registerCustomer(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("address") String address, @RequestParam("userName") String userName, @RequestParam("pswrd") String pswrd) {
+        return bankingService.registerCustomer(firstName, lastName, address, userName, pswrd);
+    }
 }
 
 

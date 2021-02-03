@@ -90,8 +90,18 @@ public class BankingService {
         return bankingRepository.customerList();
 
     }
-    public List getTransactions(){
-        return  bankingRepository.transactionHistoryList();
+
+    public List getTransactions() {
+        return bankingRepository.transactionHistoryList();
+    }
+
+    public String findPasswordByUserName(String userName) {
+        return bankingRepository.findPasswordByUserName(userName);
+    }
+
+    public String registerCustomer(String firstName, String lastName, String address, String userName, String pswrd) {
+        bankingRepository.registerCustomer(firstName, lastName, address, userName, pswrd);
+        return "New Customer Registered";
     }
 }
 

@@ -5,15 +5,76 @@
     <title>Title</title>
 </head>
 <body>
+<button class="open-button" onclick="openLogIn()">Login</button>
+<div class="form-popup" id="logIn">
+    <label for="userName">Username:</label>
+    <input type="text" id="userName" name="userName" required><br>
+    <label for="password">Password:</label>
+    <input type="text" id="password" name="password" required><br>
+    <button id="submitLogIn" type="button" class="btn">Confirm</button>
+    <button id="closeLogIn" type="button" class="btn cancel" onclick="closeLogIn()">Close</button>
+</div>
+
+<button class="open-button" onclick="openRegisterCustomer()">New Customer Registration!</button>
+<div class="form-popup" id="registerHere">
+    <label for="firstName">First name:</label>
+    <input type="text" id="newFirstName" name="firstName" required><br>
+    <label for="lastName">Last name:</label>
+    <input type="text" id="newLastName" name="lastName" required><br>
+    <label for="address">Address:</label>
+    <input type="text" id="newAddress" name="address" required><br>
+    <label for="userName">Username:</label>
+    <input type="text" id="newUserName" name="userName" required><br>
+    <label for="password">Password:</label>
+    <input type="text" id="pswrd" name="password" required><br>
+    <button id="confRegisterCustomer" type="button" class="btn">Confirm</button>
+    <button id="closeRegisterCustomer" type="button" class="btn cancel" onclick="closeRegisterCustomer()">Close</button>
+</div>
+<script>
+    function openRegisterCustomer() {
+        document.getElementById("registerHere").style.display = "block";
+    }
+    function closeRegisterCustomer() {
+        document.getElementById("registerHere").style.display = "none";
+    }
+</script>
+<script>
+
+    function result() {
+        return "New Customer Registered!"
+    }
+
+    function registerCustomer() {
+        let firstNameSearchField = document.getElementById("newFirstName");
+        let lastNameSearchField = document.getElementById("newLastName");
+        let addressSearchField = document.getElementById("newAddress");
+        let userNameSearchField = document.getElementById("newUserName");
+        let pswrdSearchField = document.getElementById("pswrd");
+
+        fetch('/Katrin/registerCustomer?firstName=' + firstNameSearchField.value + '&lastName=' + lastNameSearchField.value + '&address=' + addressSearchField.value + '&userName=' + userNameSearchField.value + '&pswrd=' + pswrdSearchField.value, {
+            method: 'POST',
+        })
+            .then(result => result.text())
+            .then(result => alert(result));
+    }
+    let requestButton = document.getElementById("confRegisterCustomer");
+    requestButton.onclick = registerCustomer;
+
+
+</script>
+
 <h1>
     <link rel="stylesheet" href="style.css">
     <br>
+
     <aside><img src="https://clipground.com/images/institute-clipart-18.jpg"></aside>
     <strong>BANK</strong><br><br>
     <em>The new way of banking, without money and future!</em><br><br>
+    <br><br>
 </h1>
+
 <button class="open-button" onclick="openGetCustomers()">Get customers</button>
-<div class="form-popup" id="getCustomers">
+<div class="form-popup" id="getCustomers" content="Customer">
     <table id="customersTable">
         <tr>
             <th>Customer Id</th>
@@ -23,7 +84,6 @@
         </tr>
     </table>
     <button id="closeGetCustomers" type="button" class="btn cancel" onclick="closeGetCustomers()">Close</button>
-
 </div>
 <script>
     function openGetCustomers() {
@@ -57,14 +117,14 @@
                 console.log(result);
             })
     }
+
     function closeGetCustomers() {
         document.getElementById("getCustomers").style.display = "none";
     }
-
-
 </script>
-<button class="open-button" onclick="openGetAccounts()">Get customers</button>
-<div class="form-popup" id="Account">
+
+<button class="open-button" onclick="openGetAccounts()">Get Accounts</button>
+<div class="form-popup" id="getAccounts" content="Account">
     <table id="accountsTable">
         <tr>
             <th>Account Id</th>
@@ -73,11 +133,10 @@
         </tr>
     </table>
     <button id="closeGetAccounts" type="button" class="btn cancel" onclick="closeGetAccounts()">Close</button>
-
 </div>
 <script>
     function openGetAccounts() {
-        document.getElementById("Account").style.display = "block";
+        document.getElementById("getAccounts").style.display = "block";
         fetch("/Katrin/getAccounts")
             .then(result => result.json())
             .then(function (result) {
@@ -103,19 +162,172 @@
                 console.log(result);
             })
     }
+
     function closeGetAccounts() {
         document.getElementById("getAccounts").style.display = "none";
     }
-
-
 </script>
 
-<button id="accounts">Accounts></button>
-<button id="transactions">Transactions></button>
-<button id="customerAccountTransactions">Customer account transactions></button>
-<br>
-<br>
+<button class="open-button" onclick="openGetTransactions()">Get transactions</button>
+<div class="form-popup" id="getTransactions" content="TransactionHistory">
+    <table id="transactionsTable">
+        <tr>
+            <th>Transaction Id</th>
+            <th>Account Id</th>
+            <th>Account number</th>
+            <th>From Account</th>
+            <th>To Account</th>
+            <th>Deposit</th>
+            <th>Withdrawal</th>
+            <th>Transfer</th>
+            <th>Timestamp</th>
+        </tr>
+    </table>
+    <button id="closeGetTransactions" type="button" class="btn cancel" onclick="closeGetTransactions()">Close</button>
+</div>
+<script>
+    function openGetTransactions() {
+        document.getElementById("getTransactions").style.display = "block";
+        fetch("/Katrin/getTransactions")
+            .then(result => result.json())
+            .then(function (result) {
+                let tableElement = document.getElementById("transactionsTable");
+                tableElement.innerHTML = "";
+                for (let element of result) {
+                    let newRowElement = document.createElement("tr");
+                    tableElement.appendChild(newRowElement);
 
+                    let newCellElement = document.createElement("td");
+                    newCellElement.innerText = element.transactionId
+                    newRowElement.appendChild(newCellElement)
+
+                    newCellElement = document.createElement("td");
+                    newCellElement.innerText = element.accountNr;
+                    newRowElement.appendChild(newCellElement)
+
+                    newCellElement = document.createElement("td");
+                    newCellElement.innerText = element.deposit;
+                    newRowElement.appendChild(newCellElement)
+
+                    newCellElement = document.createElement("td");
+                    newCellElement.innerText = element.withdrawal;
+                    newRowElement.appendChild(newCellElement)
+
+                    newCellElement = document.createElement("td");
+                    newCellElement.innerText = element.transfer;
+                    newRowElement.appendChild(newCellElement)
+
+                    newCellElement = document.createElement("td");
+                    newCellElement.innerText = element.fromAccount;
+                    newRowElement.appendChild(newCellElement)
+
+                    newCellElement = document.createElement("td");
+                    newCellElement.innerText = element.toAccount;
+                    newRowElement.appendChild(newCellElement)
+
+                    newCellElement = document.createElement("td");
+                    newCellElement.innerText = element.LocalDateTime;
+                    newRowElement.appendChild(newCellElement)
+
+                }
+                console.log(result);
+            })
+    }
+
+    function closeGetTransactions() {
+        document.getElementById("getTransactions").style.display = "none";
+    }
+</script>
+<!--<button class="open-button" onclick="openGetCustomerAccountTransactions()">Get Customer Account Transactions</button>-->
+<!--<div class="form-popup" id="getCustomerAccountTransactions" content="Account">-->
+<!--    <table id="customerAccountTransactionsTable">-->
+<!--        <tr>-->
+<!--            <th>Account Id</th>-->
+<!--            <th>Account number</th>-->
+<!--            <th>Balance</th>-->
+<!--            <th>Transaction Id</th>-->
+<!--            <th>Account number</th>-->
+<!--            <th>From Account</th>-->
+<!--            <th>To Account</th>-->
+<!--            <th>Deposit</th>-->
+<!--            <th>Withdrawal</th>-->
+<!--            <th>Transfer</th>-->
+<!--            <th>Timestamp</th>-->
+<!--        </tr>-->
+<!--    </table>-->
+<!--    <button id="closeGetCustomerAccountTransactions" type="button" class="btn cancel"-->
+<!--            onclick="closeGetCustomerAccountTransactions()">Close-->
+<!--    </button>-->
+
+<!--</div>-->
+<!--<script>-->
+<!--    function openGetCustomerAccountTransactions() {-->
+<!--        document.getElementById("getCustomerAccountTransactions").style.display = "block";-->
+<!--        fetch("/Katrin/accountTransactions")-->
+<!--            .then(result => result.json())-->
+<!--            .then(function (result) {-->
+<!--                let tableElement = document.getElementById("transactionsTable");-->
+<!--                tableElement.innerHTML = "";-->
+<!--                for (let element of result) {-->
+<!--                    let newRowElement = document.createElement("tr");-->
+<!--                    tableElement.appendChild(newRowElement);-->
+
+<!--                    let newCellElement = document.createElement("td");-->
+<!--                    newCellElement.innerText = element.accountId-->
+<!--                    newRowElement.appendChild(newCellElement)-->
+
+<!--                    newCellElement = document.createElement("td");-->
+<!--                    newCellElement.innerText = element.accountNumber;-->
+<!--                    newRowElement.appendChild(newCellElement)-->
+
+<!--                    newCellElement = document.createElement("td");-->
+<!--                    newCellElement.innerText = element.balance;-->
+<!--                    newRowElement.appendChild(newCellElement)-->
+
+<!--                    newCellElement = document.createElement("td");-->
+<!--                    newCellElement.innerText = element.transactionId-->
+<!--                    newRowElement.appendChild(newCellElement)-->
+
+<!--                    newCellElement = document.createElement("td");-->
+<!--                    newCellElement.innerText = element.accountNr;-->
+<!--                    newRowElement.appendChild(newCellElement)-->
+
+<!--                    newCellElement = document.createElement("td");-->
+<!--                    newCellElement.innerText = element.deposit;-->
+<!--                    newRowElement.appendChild(newCellElement)-->
+
+<!--                    newCellElement = document.createElement("td");-->
+<!--                    newCellElement.innerText = element.withdrawal;-->
+<!--                    newRowElement.appendChild(newCellElement)-->
+
+<!--                    newCellElement = document.createElement("td");-->
+<!--                    newCellElement.innerText = element.transfer;-->
+<!--                    newRowElement.appendChild(newCellElement)-->
+
+<!--                    newCellElement = document.createElement("td");-->
+<!--                    newCellElement.innerText = element.fromAccount;-->
+<!--                    newRowElement.appendChild(newCellElement)-->
+
+<!--                    newCellElement = document.createElement("td");-->
+<!--                    newCellElement.innerText = element.toAccount;-->
+<!--                    newRowElement.appendChild(newCellElement)-->
+
+<!--                    newCellElement = document.createElement("td");-->
+<!--                    newCellElement.innerText = element.LocalDateTime;-->
+<!--                    newRowElement.appendChild(newCellElement)-->
+
+<!--                }-->
+<!--                console.log(result);-->
+<!--            })-->
+<!--    }-->
+
+<!--    function closeGetCustomerAccountTransactions() {-->
+<!--        document.getElementById("getCustomerAccountTransactions").style.display = "none";-->
+<!--    }-->
+<!--</script>-->
+
+<br>
+<br>
 
 <button class="open-button" onclick="openCreateCustomer()">Create customer</button>
 <div class="form-popup" id="Create customer">
@@ -149,7 +361,6 @@
     </button>
 </div>
 <br><br>
-
 
 <button class="open-button" onclick="openGetBalance()">Get balance</button>
 <div class="form-popup" id="Get balance">
@@ -193,6 +404,17 @@
     <button id="closeTransfer" type="button" class="btn cancel" onclick="closeTransferMoney()">Close</button>
 </div>
 <br><br>
+<script>
+    function openLogIn() {
+        document.getElementById("logIn").style.display = "block";
+    }
+
+    function closeLogIn() {
+        document.getElementById("logIn").style.display = "none";
+    }
+
+</script>
+
 
 <script>
     function openCreateCustomer() {

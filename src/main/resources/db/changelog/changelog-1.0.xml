@@ -46,4 +46,21 @@
             </column>
         </addColumn>
     </changeSet>
+    <changeSet id="2021-02-02" author="Katrin">
+        <addColumn tableName="customer">
+            <column name="userName" type="text"/>
+            <column name="password" type="text"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="2021-02-02/2" author="Katrin">
+        <renameColumn tableName="customer" oldColumnName="userName" newColumnName="user_name"/>
+    </changeSet>
+    <changeSet id="2021-02-02/3" author="Katrin">
+        <addColumn tableName="customer">
+            <column name="pswrd" type="text"/>
+        </addColumn>
+    </changeSet>
+
+
 </databaseChangeLog>

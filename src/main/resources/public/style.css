@@ -9,6 +9,33 @@ h2 {
     background-color: lightslategrey;
     text-align: center
 }
+div1{
+    width: 10%;
+    float: right;
+    alignment: bottom;
+}
+button1{background-color: lightslategrey;
+    text-decoration-line: none;
+    color: white;
+    alignment: bottom;
+    float: right;
+    text-align: center;
+    border-bottom-color: black;
+}
+div2{
+    width: 10%;
+    float: right;
+    alignment: bottom;
+}
+button2{background-color: lightslategrey;
+    text-decoration-line: none;
+    color: white;
+    alignment: bottom;
+    float: right;
+    text-align: center;
+    border-bottom-color: black;
+}
+
 body{
     background-color: lightgrey;
 }
@@ -17,16 +44,12 @@ h1 {background-color: darkseagreen;
     text-align: center;
     alignment: center;
 }
-button{    background-color: lightslategrey;
+button{background-color: lightslategrey;
     text-decoration-line: none;
     color: white;
     alignment: top;
     text-align: center;
     border-bottom-color: black;
-}
-
-form {
-    text-align: center
 }
 
 .open-button {

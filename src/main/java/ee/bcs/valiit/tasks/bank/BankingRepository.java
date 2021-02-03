@@ -109,15 +109,35 @@ public class BankingRepository {
         List<Account> accountList = jdbcTemplate.query(sql, new HashMap<>(), new AccountRowMapper());
         return accountList;
     }
+
     public List<Customer> customerList() {
         String sql = "SELECT * FROM customer";
         List<Customer> customerList = jdbcTemplate.query(sql, new HashMap<>(), new CustomerRowMapper());
         return customerList;
     }
-    public List<TransactionHistory> transactionHistoryList(){
+
+    public List<TransactionHistory> transactionHistoryList() {
         String sql = "SELECT * FROM transaction_history";
         List<TransactionHistory> transactionHistoryList = jdbcTemplate.query(sql, new HashMap<>(), new TransactionRowMapper());
         return transactionHistoryList;
+    }
+
+    public String findPasswordByUserName(String userName) {
+        Map<String, Object> paramMap = new HashMap<>();
+        String sql = "SELECT password FROM customer WHERE user_name = :user_name";
+        paramMap.put("user_name", userName);
+        return jdbcTemplate.queryForObject(sql, paramMap, String.class);
+    }
+
+    public void registerCustomer(String firstName, String lastName, String address, String userName, String pswrd){
+        Map<String, Object> paramMap = new HashMap<>();
+        String sql = "INSERT INTO customer(firstname, lastname, address, user_name, pswrd) VALUES (:firstname, :lastname, :address, :user_name, :pswrd)";
+        paramMap.put("firstname", firstName);
+        paramMap.put("lastname", lastName);
+        paramMap.put("address", address);
+        paramMap.put("user_name", userName);
+        paramMap.put("pswrd", pswrd);
+        jdbcTemplate.update(sql, paramMap);
     }
 }
 
