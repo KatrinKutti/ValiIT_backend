@@ -31,7 +31,6 @@
     // @ is an alias to /src
     let saveInJs = function () {
         this.$http.post('http://localhost:8080/solution/employee/test', this.employee)
-        .then(() => this.getData());
     }
 
     export default {

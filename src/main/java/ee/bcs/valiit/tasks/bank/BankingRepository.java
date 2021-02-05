@@ -129,14 +129,14 @@ public class BankingRepository {
         return jdbcTemplate.queryForObject(sql, paramMap, String.class);
     }
 
-    public void registerCustomer(String firstName, String lastName, String address, String userName, String pswrd){
+    public void registerCustomer(String firstName, String lastName, String address, String userName, String password){
         Map<String, Object> paramMap = new HashMap<>();
-        String sql = "INSERT INTO customer(firstname, lastname, address, user_name, pswrd) VALUES (:firstname, :lastname, :address, :user_name, :pswrd)";
+        String sql = "INSERT INTO customer(firstname, lastname, address, user_name, password) VALUES (:firstname, :lastname, :address, :user_name, :password)";
         paramMap.put("firstname", firstName);
         paramMap.put("lastname", lastName);
         paramMap.put("address", address);
         paramMap.put("user_name", userName);
-        paramMap.put("pswrd", pswrd);
+        paramMap.put("password", password);
         jdbcTemplate.update(sql, paramMap);
     }
 }

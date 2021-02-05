@@ -4,13 +4,21 @@ import java.util.List;
 
 
 public class Customer {
-
+    private int customerId;
     private String firstName;
     private String lastName;
     private String address;
-    private int customerId;
     private String userName;
+    private String hash;
     private String password;
+
+    public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
 
     public String getUserName() {
         return userName;

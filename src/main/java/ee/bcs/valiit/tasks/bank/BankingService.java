@@ -41,7 +41,7 @@ public class BankingService {
             throw new BankException("Invalid amount. Please try again");
         }
         bankingRepository.updateBalance(accountNr, bankingRepository.getBalance(accountNr).add(deposit));
-        bankingRepository.addToHistory(accountNr, deposit, null, "null", "null", null, LocalDateTime.now().toString());
+        bankingRepository.addToHistory(accountNr, deposit, null, null, null, null, LocalDateTime.now().toString());
         return "Deposit processed";
     }
 
@@ -54,7 +54,7 @@ public class BankingService {
             throw new BankException("Not enough funds. Please try again");
         }
         bankingRepository.updateBalance(accountNr, bankingRepository.getBalance(accountNr).subtract(withdraw));
-        bankingRepository.addToHistory(accountNr, null, withdraw.negate(), "null", "null", null, LocalDateTime.now().toString());
+        bankingRepository.addToHistory(accountNr, null, withdraw.negate(), null, null, null, LocalDateTime.now().toString());
         return "Withdrawal processed";
     }
 
@@ -68,8 +68,8 @@ public class BankingService {
         }
         bankingRepository.updateBalance(fromAccount, bankingRepository.getBalance(fromAccount).subtract(transfer));
         bankingRepository.updateBalance(toAccount, bankingRepository.getBalance(toAccount).add(transfer));
-        bankingRepository.addToHistory(fromAccount, null, null, fromAccount, "null", transfer.negate(), LocalDateTime.now().toString());
-        bankingRepository.addToHistory(toAccount, null, null, "null", toAccount, transfer, LocalDateTime.now().toString());
+        bankingRepository.addToHistory(fromAccount, null, null, fromAccount, null, transfer.negate(), LocalDateTime.now().toString());
+        bankingRepository.addToHistory(toAccount, null, null, null, toAccount, transfer, LocalDateTime.now().toString());
         return "Transfer processed";
     }
 
@@ -99,8 +99,8 @@ public class BankingService {
         return bankingRepository.findPasswordByUserName(userName);
     }
 
-    public String registerCustomer(String firstName, String lastName, String address, String userName, String pswrd) {
-        bankingRepository.registerCustomer(firstName, lastName, address, userName, pswrd);
+    public String registerCustomer(String firstName, String lastName, String address, String userName, String password) {
+        bankingRepository.registerCustomer(firstName, lastName, address, userName, password);
         return "New Customer Registered";
     }
 }

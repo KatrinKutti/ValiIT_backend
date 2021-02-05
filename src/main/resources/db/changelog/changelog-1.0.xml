@@ -61,6 +61,13 @@
             <column name="pswrd" type="text"/>
         </addColumn>
     </changeSet>
+    <changeSet id="2021-02-04" author="Katrin">
+        <renameColumn tableName="customer" oldColumnName="password" newColumnName="hash"/>
+        <renameColumn tableName="customer" oldColumnName="pswrd" newColumnName="password"/>
+
+    </changeSet>
+
+
 
 
 </databaseChangeLog>

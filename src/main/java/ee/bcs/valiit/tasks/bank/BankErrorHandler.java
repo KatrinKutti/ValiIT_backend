@@ -12,6 +12,6 @@ public class BankErrorHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object>  handleBankException(BankException e) {
         ResponseError error = new ResponseError();
         error.setMessage(e.getMessage());
-        return new ResponseEntity<>(error, new HttpHeaders(), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(error, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
